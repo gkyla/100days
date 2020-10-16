@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width , initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+        <title>Todoapp</title>
+    </head>
+    <body>
+        
+        <div class="wrapper">
+        <h1>Todolist app</h1>
+
+        <div class="form-container">
+            <form id="submit">
+                <label for="plan" class="plan-label">What's your plan today ?</label><br>
+                <input type="text" id="plan" >
+                <button type="submit" class="btn" >Add</button>
+
+            </form>
+            <button class="btn" id="remove-all">Remove All</button>
+
+        </div>
+
+            <div id="todo-lists">
+                
+                    <!-- Data from Local Storage -->
+              
+            </div>
+        </div>
+        <script type="module" src="./js/app.js"></script>
+    </body>
+</html>
