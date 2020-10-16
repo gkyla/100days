@@ -89,6 +89,7 @@ button.btn:hover {
    padding: 10px;
    background-color: #edc988;
    border: 5px solid #132743;
+   transition: all 0.3s ease-in-out;
 }
 
 .plan-and-date {
@@ -117,4 +118,9 @@ button.btn:hover {
 .btn.delete {
    font-weight: bold;
    background-color: #f6830f !important;
+}
+
+/* On Done  */
+.done-true {
+   opacity: 0.5;
 }
