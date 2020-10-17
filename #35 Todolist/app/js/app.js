@@ -4,6 +4,7 @@ const form = document.querySelector('form');
 const input = document.querySelector('#plan');
 const todoLists = document.querySelector('#todo-lists');
 const removeAllBtn = document.querySelector('#remove-all');
+const listItems = document.querySelector('.list-item');
 
 // Check if Local Storage item available & use it.
 // if there is no item available, replace with empty array
@@ -22,6 +23,7 @@ const showList = () => {
 
    const data = listNotes;
    let current = 0;
+
    data.forEach((data) => {
       todoLists.innerHTML += `
         <div class="list-item" data-note-value="${current}">
@@ -84,15 +86,20 @@ const noteDelete = (index) => {
 todoLists.addEventListener('click', (e) => {
    const targetedElement = e.target.parentElement.parentElement;
    const checkAttribute = targetedElement.hasAttribute('data-note-value');
+   const valueIndex = targetedElement.getAttribute('data-note-value');
 
    if (e.target.id === 'done') {
       if (checkAttribute) {
-         const valueIndex = targetedElement.getAttribute('data-note-value');
-         noteDone(valueIndex);
+         targetedElement.classList.toggle('done-true');
+
+         if (targetedElement.classList.contains('done-true')) {
+            noteDone(valueIndex);
+         } else {
+            listNotes[valueIndex].done = false;
+         }
          saveDataStorage(listNotes);
       }
    } else if (e.target.id === 'delete') {
-      const valueIndex = targetedElement.getAttribute('data-note-value');
       noteDelete(valueIndex);
       showList();
    }
