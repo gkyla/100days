@@ -36,8 +36,8 @@ const showList = () => {
         </div>
         `;
 
-      // Check object if there is included "saved" value.
-      // If its included, add class "done-true" to every items that include "saved" value .
+      // Check object if there is included "saved" value at current index.
+      // If its included, add class "done-true" to every items that include "saved" value at current index.
       if (Object.values(listNotes[current]).includes('saved')) {
          const allListItems = document.querySelectorAll('.list-item')[current];
          allListItems.classList.add('done-true');
