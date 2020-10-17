@@ -4,9 +4,8 @@ const form = document.querySelector('form');
 const input = document.querySelector('#plan');
 const todoLists = document.querySelector('#todo-lists');
 const removeAllBtn = document.querySelector('#remove-all');
-const listItems = document.querySelector('.list-item');
 
-// Check if Local Storage item available & use it.
+// Check if Local Storage item available & use it (if available).
 // if there is no item available, replace with empty array
 let listNotes = JSON.parse(localStorage.getItem(CONFIG.STORAGE_NAME)) || [];
 
@@ -23,7 +22,6 @@ const showList = () => {
 
    const data = listNotes;
    let current = 0;
-
    data.forEach((data) => {
       todoLists.innerHTML += `
         <div class="list-item" data-note-value="${current}">
@@ -37,6 +35,18 @@ const showList = () => {
             </div>
         </div>
         `;
+
+      // Check object if there is included "saved" value.
+      const notePropertyDone = Object.values(listNotes[current]).includes(
+         'saved'
+      );
+
+      // If its included, add class "done-true" to every items that include "saved" value .
+      if (notePropertyDone) {
+         const allListItems = document.querySelectorAll('.list-item')[current];
+         allListItems.classList.add('done-true');
+         console.log(allListItems);
+      }
       current++;
    });
 };
@@ -47,7 +57,7 @@ removeAllBtn.addEventListener('click', () => {
    showList();
 });
 
-const createNoteObject = (inputValue, save = false) => {
+const createNoteObject = (inputValue, save = 'not') => {
    return {
       id: new Date().toDateString(),
       note: inputValue,
@@ -76,7 +86,7 @@ form.addEventListener('submit', (e) => {
 });
 
 const noteDone = (index) => {
-   listNotes[index].done = true;
+   listNotes[index].done = 'saved';
 };
 
 const noteDelete = (index) => {
@@ -95,7 +105,7 @@ todoLists.addEventListener('click', (e) => {
          if (targetedElement.classList.contains('done-true')) {
             noteDone(valueIndex);
          } else {
-            listNotes[valueIndex].done = false;
+            listNotes[valueIndex].done = 'not';
          }
          saveDataStorage(listNotes);
       }
