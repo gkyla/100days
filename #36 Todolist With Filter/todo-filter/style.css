@@ -77,7 +77,8 @@ button.btn:hover {
 
 #todo-lists {
    display: flex;
-   justify-content: center;
+   align-items: center;
+   flex-direction: column;
    margin-top: 2rem;
    width: 100%;
    min-height: 300px;
