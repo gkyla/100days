@@ -3,10 +3,12 @@ import { filterAll, filterDone, filterNotYet } from './filter.js';
 const filterOption = document.querySelector('#filter-note');
 
 const displayList = (listNotes) => {
-   filterAll(listNotes);
-
    if (filterOption.selectedOptions[0].value == 'done') {
       filterDone(listNotes);
+   } else if (filterOption.selectedOptions[0].value == 'not-yet') {
+      filterNotYet(listNotes);
+   } else {
+      filterAll(listNotes);
    }
 
    filterOption.addEventListener('change', () => {
