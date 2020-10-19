@@ -1,11 +1,11 @@
-import { showList } from './app.js';
+import { showList, saveDataStorage } from './app.js';
 
 const filterDone = (listNotes) => {
    if (listNotes == undefined || listNotes == null) {
       return;
    }
+   let done = listNotes.filter((note) => note.done === 'saved');
 
-   const done = listNotes.filter((note) => note.done === 'saved');
    showList(done);
 };
 
