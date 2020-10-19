@@ -1,16 +1,16 @@
-import { showList, saveDataStorage } from './app.js';
+import { render } from './render.js';
 
 const filterDone = (listNotes) => {
    if (listNotes == undefined || listNotes == null) {
       return;
    }
-   let done = listNotes.filter((note) => note.done === 'saved');
+   const done = listNotes.filter((note) => note.done === 'saved');
 
-   showList(done);
+   render(done);
 };
 
 const filterAll = (listNotes) => {
-   showList(listNotes);
+   render(listNotes);
 };
 
 const filterNotYet = (listNotes) => {
@@ -19,7 +19,8 @@ const filterNotYet = (listNotes) => {
    }
 
    const notYet = listNotes.filter((note) => note.done === 'not');
-   showList(notYet);
+   console.log(notYet);
+   render(notYet);
 };
 
 export { filterAll, filterDone, filterNotYet };
