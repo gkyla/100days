@@ -17,7 +17,7 @@ const buttonAction = (listNotes) => {
             filterNotYet(listNotes);
             break;
          default:
-            console.log('kintil');
+            console.error('looks like something gone wrong !');
       }
    });
 };
