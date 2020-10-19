@@ -3,6 +3,8 @@ import { filterAll, filterDone, filterNotYet } from './filter.js';
 const filterOption = document.querySelector('#filter-note');
 
 const buttonAction = (listNotes) => {
+   filterAll(listNotes);
+
    filterOption.addEventListener('change', () => {
       let selectedValue = filterOption.selectedOptions[0].value;
 
