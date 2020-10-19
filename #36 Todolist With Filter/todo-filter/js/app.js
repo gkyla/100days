@@ -1,5 +1,5 @@
 import CONFIG from './config.js';
-import { displayList } from './list-setting.js';
+import { displayList } from './display-list.js';
 
 const form = document.querySelector('form');
 const input = document.querySelector('#plan');
@@ -35,7 +35,12 @@ form.addEventListener('submit', (e) => {
 
    const inputValue = input.value;
 
-   if (inputValue === '' || inputValue == null) {
+   if (
+      inputValue === '' ||
+      inputValue == null ||
+      inputValue == 'saved' ||
+      inputValue == 'not'
+   ) {
       return;
    }
 
@@ -54,8 +59,8 @@ const noteDone = (index) => {
    listNotes[index].done = 'saved';
 };
 
+// Need fix delete button
 const noteDelete = (index) => {
-   console.log(listNotes[index]);
    listNotes.splice(index, 1);
 };
 
@@ -74,6 +79,8 @@ todoLists.addEventListener('click', (e) => {
 
             if (valueOption === 'not-yet') {
                targetedElement.style.display = 'none';
+            } else {
+               targetedElement.style.display = 'flex';
             }
          } else {
             listNotes[valueIndex].done = 'not';
@@ -81,11 +88,14 @@ todoLists.addEventListener('click', (e) => {
             // if press done button on "done" option, the list will be displayed to none
             if (valueOption === 'done') {
                targetedElement.style.display = 'none';
+            } else {
+               targetedElement.style.display = 'flex';
             }
          }
          saveDataStorage(listNotes);
       }
    } else if (e.target.id === 'delete') {
+      console.log(listNotes);
       noteDelete(valueIndex);
       saveDataStorage(listNotes);
       displayList(listNotes);
