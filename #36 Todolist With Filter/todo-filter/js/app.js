@@ -69,7 +69,6 @@ todoLists.addEventListener('click', (e) => {
    const checkAttribute = targetedElement.hasAttribute('data-note-value');
    const valueIndex = targetedElement.getAttribute('data-note-value');
    const valueOption = filterOption.selectedOptions[0].value;
-
    if (e.target.id === 'done') {
       if (checkAttribute) {
          targetedElement.classList.toggle('done-true');
@@ -95,8 +94,10 @@ todoLists.addEventListener('click', (e) => {
          saveDataStorage(listNotes);
       }
    } else if (e.target.id === 'delete') {
-      console.log(listNotes);
-      noteDelete(valueIndex);
+      // Get innerText List & get index array of object
+      const getNoteContent = targetedElement.children[0].children[1].innerText;
+      const index = listNotes.map((item) => item.note).indexOf(getNoteContent);
+      noteDelete(index);
       saveDataStorage(listNotes);
       displayList(listNotes);
    }
