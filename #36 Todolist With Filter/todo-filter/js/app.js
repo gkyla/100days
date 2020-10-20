@@ -1,6 +1,5 @@
 import CONFIG from './config.js';
 import { displayList } from './display-list.js';
-import { filterNotYet } from './filter.js';
 
 const form = document.querySelector('form');
 const input = document.querySelector('#plan');
@@ -56,55 +55,60 @@ form.addEventListener('submit', (e) => {
    form.reset();
 });
 
-const noteDone = (index) => {
-   listNotes[index].done = true;
-};
-
-// Need fix delete button
 const noteDelete = (index) => {
    listNotes.splice(index, 1);
 };
 
 todoLists.addEventListener('click', (e) => {
    const targetedElement = e.target.parentElement.parentElement;
-   const checkClass = targetedElement.classList.contains('list-item');
+   const containsListItem = targetedElement.classList.contains('list-item');
    const valueOption = filterOption.selectedOptions[0].value;
+   const targetedIdElement = e.target.id;
 
-   // Only if targeting done / delete button
-   if (e.target.id == 'done' || e.target.id == 'delete') {
+   // Only if targeting done / delete button , then do ..
+   if (targetedIdElement == 'done' || targetedIdElement == 'delete') {
       // Get innerText list & get index array of object
-      const getNoteContent = targetedElement.children[0].children[1].innerText;
+      const getNoteContent = targetedElement.children[0].children[1].innerText; // note value
       const index = listNotes.map((item) => item.note).indexOf(getNoteContent);
 
-      if (e.target.id === 'done') {
-         if (checkClass) {
-            targetedElement.classList.toggle('done-true');
+      switch (targetedIdElement) {
+         case 'done':
+            if (containsListItem) {
+               // add if no class done-true
+               targetedElement.classList.toggle('done-true');
 
-            if (targetedElement.classList.contains('done-true')) {
-               noteDone(index);
+               if (targetedElement.classList.contains('done-true')) {
+                  // If contains class "done-true " change "note" property value to "true"
+                  listNotes[index].done = true;
 
-               if (valueOption === 'not-yet') {
-                  targetedElement.style.display = 'none';
+                  // if press done button at "Not Yet" option, the list will be displayed to none
+                  if (valueOption === 'not-yet') {
+                     targetedElement.style.display = 'none';
+                  } else {
+                     targetedElement.style.display = 'flex';
+                  }
                } else {
-                  targetedElement.style.display = 'flex';
-               }
-            } else {
-               listNotes[index].done = false;
+                  // If not contains class "done-true" change "note" property value to "false"
+                  listNotes[index].done = false;
 
-               // if press done button on "done" option, the list will be displayed to none
-               if (valueOption === 'done') {
-                  targetedElement.style.display = 'none';
-               } else {
-                  targetedElement.style.display = 'flex';
+                  // if press done button at "done" option, the list will be displayed to none
+                  if (valueOption === 'done') {
+                     targetedElement.style.display = 'none';
+                  } else {
+                     targetedElement.style.display = 'flex';
+                  }
                }
+               saveDataStorage(listNotes);
+               displayList(listNotes);
             }
+            break;
+         case 'delete':
+            noteDelete(index);
             saveDataStorage(listNotes);
             displayList(listNotes);
-         }
-      } else if (e.target.id === 'delete') {
-         noteDelete(index);
-         saveDataStorage(listNotes);
-         displayList(listNotes);
+            break;
+         default:
+            console.log('Something gone wrong !');
       }
    }
 });
