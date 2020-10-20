@@ -1,4 +1,7 @@
+import CONFIG from './config.js';
+
 const todoLists = document.querySelector('#todo-lists');
+const filterOption = document.querySelector('#filter-note');
 
 const resetContainer = (container) => {
    container.innerHTML = '';
@@ -6,6 +9,31 @@ const resetContainer = (container) => {
 
 const render = (data) => {
    resetContainer(todoLists);
+   const selectedValue = filterOption.selectedOptions[0].value;
+
+   if (Object.entries(data).length == 0) {
+      switch (selectedValue) {
+         case 'all':
+            todoLists.innerHTML = `<h2> No Plan has been created :( </h2>`;
+            break;
+         case 'done':
+            todoLists.innerHTML = `<h2> No Plan has been finished :( </h2>`;
+            break;
+         case 'not-yet':
+            const checkLocalItem = JSON.parse(
+               localStorage.getItem(CONFIG.STORAGE_NAME)
+            );
+            if (!Object.entries(checkLocalItem).length == 0) {
+               todoLists.innerHTML = `<h2> Yey looks like you finished your all plan :D!</h2>`;
+            } else {
+               todoLists.innerHTML = `<h2> No Plan has been created & finished :( </h2>`;
+            }
+            break;
+         default:
+            console.error('Something gone wrong ');
+            break;
+      }
+   }
 
    let currentIndex = 0;
    data.forEach((item) => {
