@@ -4,7 +4,7 @@ const filterDone = (listNotes) => {
    if (listNotes == undefined || listNotes == null) {
       return;
    }
-   const done = listNotes.filter((note) => note.done === 'saved');
+   const done = listNotes.filter((note) => note.done === true);
 
    render(done);
 };
@@ -18,7 +18,7 @@ const filterNotYet = (listNotes) => {
       return;
    }
 
-   const notYet = listNotes.filter((note) => note.done === 'not');
+   const notYet = listNotes.filter((note) => note.done === false);
    render(notYet);
 };
 
