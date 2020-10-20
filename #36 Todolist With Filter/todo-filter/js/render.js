@@ -53,7 +53,7 @@ const render = (data) => {
       // Check object if there is included "saved" value at current index.
       // If its included, add class "done-true" to every items that include "saved" value at current index.
       // "data" in here means "array" in argument function passed to the render function as an parameter.
-      if (Object.values(data[currentIndex]).includes('saved')) {
+      if (Object.values(data[currentIndex]).includes(true)) {
          const allListItemsCurrent = document.querySelectorAll('.list-item')[
             currentIndex
          ];
