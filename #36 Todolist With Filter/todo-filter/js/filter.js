@@ -19,7 +19,6 @@ const filterNotYet = (listNotes) => {
    }
 
    const notYet = listNotes.filter((note) => note.done === 'not');
-   console.log(notYet);
    render(notYet);
 };
 
