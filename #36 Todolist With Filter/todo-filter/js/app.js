@@ -1,5 +1,6 @@
 import CONFIG from './config.js';
 import { displayList } from './display-list.js';
+import { filterNotYet } from './filter.js';
 
 const form = document.querySelector('form');
 const input = document.querySelector('#plan');
@@ -21,7 +22,7 @@ removeAllBtn.addEventListener('click', () => {
    displayList(listNotes);
 });
 
-const createNoteObject = (inputValue, save = 'not') => {
+const createNoteObject = (inputValue, save = false) => {
    return {
       id: new Date().toDateString(),
       note: inputValue,
@@ -30,17 +31,17 @@ const createNoteObject = (inputValue, save = 'not') => {
 };
 
 form.addEventListener('submit', (e) => {
-   filterOption.selectedIndex = 0;
    e.preventDefault();
 
    const inputValue = input.value;
 
-   if (
-      inputValue === '' ||
-      inputValue == null ||
-      inputValue == 'saved' ||
-      inputValue == 'not'
-   ) {
+   if (inputValue === '' || inputValue == null) {
+      return;
+   }
+
+   const sameAsData = listNotes.find((item) => item.note == inputValue);
+   if (sameAsData) {
+      alert('You cannot enter the same name value !');
       return;
    }
 
@@ -56,7 +57,7 @@ form.addEventListener('submit', (e) => {
 });
 
 const noteDone = (index) => {
-   listNotes[index].done = 'saved';
+   listNotes[index].done = true;
 };
 
 // Need fix delete button
@@ -66,40 +67,45 @@ const noteDelete = (index) => {
 
 todoLists.addEventListener('click', (e) => {
    const targetedElement = e.target.parentElement.parentElement;
-   const checkAttribute = targetedElement.hasAttribute('data-note-value');
-   const valueIndex = targetedElement.getAttribute('data-note-value');
+   const checkClass = targetedElement.classList.contains('list-item');
    const valueOption = filterOption.selectedOptions[0].value;
-   if (e.target.id === 'done') {
-      if (checkAttribute) {
-         targetedElement.classList.toggle('done-true');
 
-         if (targetedElement.classList.contains('done-true')) {
-            noteDone(valueIndex);
-
-            if (valueOption === 'not-yet') {
-               targetedElement.style.display = 'none';
-            } else {
-               targetedElement.style.display = 'flex';
-            }
-         } else {
-            listNotes[valueIndex].done = 'not';
-
-            // if press done button on "done" option, the list will be displayed to none
-            if (valueOption === 'done') {
-               targetedElement.style.display = 'none';
-            } else {
-               targetedElement.style.display = 'flex';
-            }
-         }
-         saveDataStorage(listNotes);
-      }
-   } else if (e.target.id === 'delete') {
-      // Get innerText List & get index array of object
+   // Only if targeting done / delete button
+   if (e.target.id == 'done' || e.target.id == 'delete') {
+      // Get innerText list & get index array of object
       const getNoteContent = targetedElement.children[0].children[1].innerText;
       const index = listNotes.map((item) => item.note).indexOf(getNoteContent);
-      noteDelete(index);
-      saveDataStorage(listNotes);
-      displayList(listNotes);
+
+      if (e.target.id === 'done') {
+         if (checkClass) {
+            targetedElement.classList.toggle('done-true');
+
+            if (targetedElement.classList.contains('done-true')) {
+               noteDone(index);
+
+               if (valueOption === 'not-yet') {
+                  targetedElement.style.display = 'none';
+               } else {
+                  targetedElement.style.display = 'flex';
+               }
+            } else {
+               listNotes[index].done = false;
+
+               // if press done button on "done" option, the list will be displayed to none
+               if (valueOption === 'done') {
+                  targetedElement.style.display = 'none';
+               } else {
+                  targetedElement.style.display = 'flex';
+               }
+            }
+            saveDataStorage(listNotes);
+            displayList(listNotes);
+         }
+      } else if (e.target.id === 'delete') {
+         noteDelete(index);
+         saveDataStorage(listNotes);
+         displayList(listNotes);
+      }
    }
 });
 
