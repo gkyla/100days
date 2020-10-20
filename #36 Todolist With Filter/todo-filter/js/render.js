@@ -23,6 +23,9 @@ const render = (data) => {
             const checkLocalItem = JSON.parse(
                localStorage.getItem(CONFIG.STORAGE_NAME)
             );
+
+            // Check localStorage , if item not equal to 0 and then "not-yet" option has no item inside it
+            // Then we know that either the item has been marked done or there is no item inside the data.
             if (!Object.entries(checkLocalItem).length == 0) {
                todoLists.innerHTML = `<h2> Yey looks like you finished your all plan :D!</h2>`;
             } else {
