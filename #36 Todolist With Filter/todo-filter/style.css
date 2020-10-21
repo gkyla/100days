@@ -30,7 +30,6 @@ html {
    align-items: center;
    width: 100%;
    padding: 5px;
-   max-width: 1000px;
 }
 
 h1 {
@@ -62,7 +61,7 @@ form label {
    border: 3px solid #edc988;
    background-color: #ffffff;
    padding: 10px 20px;
-   width: 500px;
+   min-width: 500px;
    margin-top: 1rem;
 }
 
@@ -145,4 +144,45 @@ button.btn:hover {
 /* On Done  */
 .done-true {
    opacity: 0.5;
+}
+
+@media (max-width: 900px) {
+   .wrapper {
+      padding: 15px;
+   }
+
+   form {
+      text-align: center;
+      display: flex;
+      width: 100%;
+      margin-bottom: 20px;
+      flex-direction: column;
+      align-items: center;
+   }
+
+   #plan {
+      width: 100%;
+      min-width: 0;
+   }
+
+   button[type='submit'] {
+      margin-top: 20px;
+   }
+
+   .form-container {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .remove-and-option {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+   }
+
+   .remove-and-option > * {
+      margin: 0 10px;
+   }
 }
