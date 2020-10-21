@@ -1,0 +1,81 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   /* background-image: linear-gradient(-20deg, #2b5876 0%, #4e4376 100%); */
+   background: #f8efd4;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body,
+html {
+   min-height: 100vh;
+}
+
+form {
+   width: 100%;
+}
+
+input {
+   border-radius: 10px;
+   margin: 0 15px;
+}
+
+input[type='text'] {
+   min-width: 200px;
+   padding: 10px 20px;
+   border: #d7385e 5px solid;
+}
+
+input[type='submit'] {
+   cursor: pointer;
+   padding: 10px 20px;
+   color: black;
+   background-color: #f1f6f9;
+   border: #d7385e 5px solid;
+}
+
+.wrapper {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   align-items: center;
+   color: white;
+   text-align: center;
+   width: 100%;
+   max-width: 700px;
+   min-height: 400px;
+
+   border-radius: 20px;
+   background: #132743;
+   box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.3),
+      0px 0px 30px 0 rgba(0, 0, 0, 0.5);
+}
+
+.display {
+   width: 70%;
+   padding: 10px;
+   border-radius: 10px;
+   background: #d7385e;
+   margin-top: 30px;
+}
+
+.add-animation {
+   animation: fade 0.5s;
+}
+
+@keyframes fade {
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
+}
