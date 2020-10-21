@@ -34,13 +34,13 @@ const addAnimationBack = () => {
    // Add
    display.classList.add('add-animation');
 
-   // Remove it after 1 second
+   // Remove it after 500 ms
    setTimeout(() => {
       display.classList.remove('add-animation');
    }, 500);
 };
 
-// Remove it after 1 second on the first idle
+// Remove it after 500 ms on the first idle
 setTimeout(() => {
    display.classList.remove('add-animation');
 }, 500);
