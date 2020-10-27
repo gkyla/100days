@@ -10,11 +10,12 @@
 
       <div class="wrapper">
          <div class="show-score">
-            <p>2 Correct</p>
+            <p class="correct">- Correct</p>
+            <p class="wrong">- Wrong</p>
          </div>
          <div class="question-container">
-            <span>Question 1</span>
-            <p>
+            <span class="question-number">Question 1</span>
+            <p class="question-text">
                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
                eos nisi nostrum ab sunt dolores molestiae deleniti maiores,
                soluta dignissimos.
@@ -22,21 +23,22 @@
             <span>Answer Option</span>
             <div class="question-option">
                <ul>
-                  <li id="a" tabindex="0">
+                  <li id="a" tabindex="0" data-option-answer>
                      <span class="option">A</span> Lorem ipsum dolor sit amet.
                   </li>
-                  <li id="b" tabindex="0">
+                  <li id="b" tabindex="0" data-option-answer>
                      <span class="option">B</span> Lorem ipsum dolor sit amet.
                   </li>
-                  <li id="c" tabindex="0">
+                  <li id="c" tabindex="0" data-option-answer>
                      <span class="option">C</span> Lorem ipsum dolor sit amet.
                   </li>
                </ul>
             </div>
          </div>
-         <button class="btn" id="answer">Answer Question</button>
+         <button class="btn" id="btn-next">Answer Question</button>
+         <button class="btn" id="btn-retry">Retry Again</button>
       </div>
 
-      <script src="./js/app.js"></script>
+      <script type="module" src="./js/app.js"></script>
    </body>
 </html>
