@@ -1,17 +1,30 @@
+import { render, tryAgain } from './render.js';
+
 const li = document.querySelectorAll('li');
 
-li.forEach((el) => {
-   el.addEventListener('click', (e) => {
-      let current = 0;
-      while (current < li.length) {
-         if (li[current].classList.contains('active')) {
-            li[current].classList.remove('active');
-         }
-         console.log(li[current]);
-         current++;
-      }
+li.forEach((list) => {
+   list.addEventListener('click', (e) => {
+      checkCurrentActive(li);
       e.target.classList.add('active');
+   });
+
+   list.addEventListener('keypress', (e) => {
+      if (e.key == 'Enter') {
+         checkCurrentActive(li);
+         e.target.classList.add('active');
+      }
    });
 });
 
-console.log(li.length);
+function checkCurrentActive(el) {
+   let current = 0;
+   while (current < li.length) {
+      if (el[current].classList.contains('active')) {
+         el[current].classList.remove('active');
+      }
+      current++;
+   }
+}
+
+render();
+tryAgain();
