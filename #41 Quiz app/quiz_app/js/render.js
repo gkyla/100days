@@ -1,16 +1,16 @@
 import quizData from './data.js';
 
+const li = document.querySelectorAll('li[data-option-answer]');
 const questionText = document.querySelector('.question-text');
+const questionNumber = document.querySelector('.question-number');
+const questionContainer = document.querySelector('.question-container');
 const aOption = document.querySelector('li#a');
 const bOption = document.querySelector('li#b');
 const cOption = document.querySelector('li#c');
-const li = document.querySelectorAll('li[data-option-answer]');
-const questionNumber = document.querySelector('.question-number');
 const btnNext = document.querySelector('#btn-next');
 const btnRetry = document.querySelector('#btn-retry');
 const correct = document.querySelector('.correct');
 const wrong = document.querySelector('.wrong');
-const questionContainer = document.querySelector('.question-container');
 
 function render() {
    let correctScore = 0;
@@ -32,6 +32,7 @@ function render() {
                wrongScore++;
             }
             index++;
+            li.forEach((li) => li.classList.remove('active'));
          }
 
          if (index >= quizData.length) {
@@ -44,7 +45,7 @@ function render() {
             </div>
             `;
             btnNext.style.display = 'none';
-            btnRetry.style.display = '';
+            btnRetry.style.display = 'block';
             correct.style.display = 'none';
             wrong.style.display = 'none';
          } else {
@@ -56,6 +57,10 @@ function render() {
 
    btnRetry.style.display = 'none';
 }
+
+btnRetry.addEventListener('click', () => {
+   window.location.href = 'index.html';
+});
 
 function questionShow(index) {
    if (index <= quizData.length) {
@@ -69,13 +74,6 @@ function questionShow(index) {
    }
 }
 
-function tryAgain(index) {
-   btnRetry.addEventListener('click', () => {
-      index = 0;
-      render();
-   });
-}
-
 function renderScore(correctScore = 0, wrongScore = 0) {
    correct.innerHTML = `${correctScore} Correct`;
    wrong.innerHTML = `${wrongScore} Wrong`;
@@ -83,4 +81,4 @@ function renderScore(correctScore = 0, wrongScore = 0) {
 
 console.log(quizData.length);
 
-export { render, tryAgain };
+export { render };
