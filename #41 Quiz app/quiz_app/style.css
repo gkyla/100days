@@ -106,6 +106,10 @@ body {
    background-color: #8fd3f4;
 }
 
+#btn-retry {
+   margin-top: 40px !important;
+}
+
 .final-score {
    padding: 20px;
    text-align: center;
