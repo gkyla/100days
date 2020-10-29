@@ -1,0 +1,60 @@
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width , initial-scale=1" />
+      <title>Update CSS variable</title>
+      <link rel="stylesheet" href="style.css" />
+   </head>
+   <body>
+      <div class="wrapper">
+         <div class="title">
+            <h1>Change Effect</h1>
+         </div>
+
+         <div class="user">
+            <div class="box sec-brightness">
+               <label for="brightness">Brightness</label>
+               <input
+                  type="range"
+                  min="0"
+                  max="100"
+                  value="100"
+                  name="brightness"
+                  id="brightness"
+                  data-change="%"
+               />
+            </div>
+
+            <div class="box sec-blur">
+               <label for="blur">Blur</label>
+               <input
+                  type="range"
+                  name="blur"
+                  min="0"
+                  max="5"
+                  value="0"
+                  id="blur"
+                  data-change="px"
+               />
+            </div>
+
+            <div class="box sec-grayscale">
+               <label for="grayscale">Greyscale</label>
+               <input
+                  type="range"
+                  name="grayscale"
+                  min="0"
+                  max="100"
+                  value="0"
+                  id="greyscale"
+                  data-change="%"
+               />
+            </div>
+         </div>
+         <div class="picture">
+            <img src="./img/picture-1.jpg" alt="display picture" />
+         </div>
+         <script src="./js/app.js"></script>
+      </div>
+   </body>
+</html>
