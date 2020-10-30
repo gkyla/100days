@@ -1,9 +1,9 @@
 // Define Media Query width , matchMedia will return an a object
-const widthToChange = window.matchMedia('(max-width:768px)');
+const setWidth = window.matchMedia('(max-width:768px)');
 
-function handleChangeWidth(widthToChange) {
+function handleChange(mediaWidth) {
    // Check matches property, If less than or equal to 768px it will return true value
-   if (widthToChange.matches) {
+   if (mediaWidth.matches) {
       // If matches then do ...
       document.body.style.backgroundColor = '#fcf876';
       document.body.style.color = '#1c2b2d';
@@ -15,7 +15,7 @@ function handleChangeWidth(widthToChange) {
 }
 
 // Pass an argument to function
-handleChangeWidth(widthToChange);
+handleChange(setWidth);
 
 // Listen onChange
-widthToChange.addEventListener('change', handleChangeWidth);
+setWidth.addEventListener('change', handleChange);
