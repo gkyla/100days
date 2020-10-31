@@ -1,3 +1,3 @@
 # 100days
 
-project collection about me tryhard understanding more html,css & javascript
+project collections about me tryhard understanding more html,css & javascript
