@@ -52,7 +52,6 @@ textarea {
 
 input:focus,
 textarea:focus {
-   /* box-shadow: 0 0 0 5px #97d6ad; */
    outline: 3px dashed #d8f3e2;
    background-color: #fafafafa;
 }
@@ -71,7 +70,9 @@ input.submit-btn,
 }
 
 input.submit-btn:hover,
-.open-edit:hover {
+input.submit-btn:focus,
+.open-edit:hover,
+.open-edit:focus {
    background: #777777;
 }
 
