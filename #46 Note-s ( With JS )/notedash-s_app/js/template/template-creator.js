@@ -1,12 +1,12 @@
 const createItemNote = (note, index) => `
-<div class="item">
+<div class="item" data-id-note="${note.id}">
     <button class="delete-item">X</button>
    <div class="title-item">
       <h1>${note.title}</h1>
    </div>
    <div class="note-item">
       <p>
-         ${note.story}
+         ${note.text}
       </p>
    </div>
    <button class="open-edit">Open</button>
@@ -43,12 +43,12 @@ const createItemNote = (note, index) => `
                <textarea
                   name="edit-${index}"
                   id="edit-${index}"
-                  rows="20"
+                  rows="10"
                   cols="30"
                   wrap="hard"
                   class="edit-text-modal"
                   disabled
-               >${note.story}</textarea>
+               >${note.text}</textarea>
             </div>
          </div>
       </div>
