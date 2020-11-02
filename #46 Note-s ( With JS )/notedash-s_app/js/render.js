@@ -13,8 +13,8 @@ function render(noteData) {
    });
 
    // Call handler every render new note item
-   modalHandler();
-   deleteHandler(noteData);
+   modalHandler(noteData); // Handler for open,close modal
+   deleteHandler(noteData); // Handler for delete item
 }
 
 export { render };
