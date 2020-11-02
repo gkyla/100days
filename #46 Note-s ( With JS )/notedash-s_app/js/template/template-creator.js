@@ -9,21 +9,21 @@ const createItemNote = (note, index) => `
          ${note.text}
       </p>
    </div>
-   <button class="open-edit">Open</button>
+   <button class="open-edit" id="open-edit">Open</button>
 
    <div class="modal">
       <div class="modal-content">
          <nav class="nav-modal">
             <ul class="nav-modal-links">
                <li class="nav-item-link">
-                  <button class="close-modal">&times;</button>
+                  <button class="close-modal" id="close-modal">&times;</button>
                </li>
                <i class="current-status">Read-Only</i>
                <li class="nav-item-link edit-link">
-                  <button class="edit-modal">Edit</button>
+                  <button class="edit-modal" id="edit-modal">Edit</button>
                </li>
                <li class="nav-item-link">
-                  <button class="save-modal">Save</button>
+                  <button class="save-modal" id="save-modal">Save</button>
                </li>
             </ul>
          </nav>
