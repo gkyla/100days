@@ -14,4 +14,10 @@ const saveStorageAndRender = (item) => {
    render(noteData);
 };
 
-export { setLocalStorageAndRender, saveStorageAndRender };
+// Without Push item
+const renderSave = () => {
+   render(noteData);
+   localStorage.setItem(CONFIG.STORAGE_NAME, JSON.stringify(noteData));
+};
+
+export { setLocalStorageAndRender, saveStorageAndRender, renderSave };
