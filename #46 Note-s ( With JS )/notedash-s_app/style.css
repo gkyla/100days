@@ -14,12 +14,14 @@ body {
    display: flex;
    flex-direction: column;
    align-items: center;
-   justify-content: center;
 }
 
 .wrapper {
    width: 100%;
    height: 100%;
+}
+
+.box-content {
    padding: 10px;
 }
 
@@ -87,9 +89,9 @@ input.submit-btn:focus,
    position: relative;
    width: 100%;
    background-color: #fbf7f0;
-   border-radius: 10px;
+   border-radius: 7px;
    padding: 1.1rem;
-   margin-bottom: 2rem;
+   margin-bottom: 1.5rem;
    display: flex;
    flex-direction: column;
 }
@@ -97,16 +99,17 @@ input.submit-btn:focus,
 .note-container {
    position: relative;
    margin-top: 1.1rem;
+   min-height: 360px;
    display: grid !important;
    grid-template-columns: 1fr;
-   grid-auto-flow: dense;
    gap: 20px;
 }
 
 .item {
    position: relative;
    display: flex;
-   /* height: 150px; */
+   min-height: 170px;
+   align-self: flex-start;
    flex-direction: column;
    padding: 10px;
    background-color: #dfdbd6;
@@ -140,15 +143,16 @@ input.submit-btn:focus,
    min-width: 44px !important;
    min-height: 44px !important;
    border-radius: 50%;
-   border: 2px solid #3d3d3c;
+   border: none;
    margin: 0.6rem;
    font-size: 20px;
    font-family: inherit;
    background-color: #dfdbd6;
-   transition: 0.3s ease-in-out all;
+   transition: 0.1s ease-in-out all;
 }
 
 .delete-item:hover {
+   border: 2px solid #3d3d3c;
    transform: scale(1.1);
 }
 
@@ -162,10 +166,19 @@ input.submit-btn:focus,
    margin-top: 1.1rem;
 }
 
-.sub {
-   text-align: center;
+.date-item {
+   font-size: 0.8rem;
+   color: #8a8a8a;
+   position: absolute;
+   bottom: 20px;
 }
 
+.sub {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   text-align: center;
+}
 /* modal */
 
 .modal {
@@ -192,6 +205,7 @@ input.submit-btn:focus,
 .open {
    opacity: 1;
    visibility: visible;
+   transition: 0.3s all ease-in-out;
 }
 
 .modal-content {
@@ -290,13 +304,24 @@ li.edit-link {
    font-family: inherit;
 }
 
+/* No Item */
+
+.no-item {
+   min-height: 300px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+   font-size: 0.75rem;
+}
+
 @media (min-width: 520px) {
-   .item h1 {
-      width: 270px;
+   .sub {
+      font-size: 1rem;
    }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 688px) {
    .wrapper,
    .modal-content {
       font-size: 1.3rem;
@@ -315,6 +340,7 @@ li.edit-link {
       padding: 20px !important;
    }
 
+   .item h1,
    .item p {
       width: 220px;
    }
