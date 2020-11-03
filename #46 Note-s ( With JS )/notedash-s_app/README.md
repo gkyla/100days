@@ -18,8 +18,8 @@
 
 ## [X] User can add Note
 
-## [ ] Display information when there is no item / note inside container
+## [X] Display information when there is no item / note inside container
 
-## [ ] User can edit detail Note
+## [X] User can edit detail Note
 
-## [ ] User can save detail Note
+## [X] User can save detail Note
