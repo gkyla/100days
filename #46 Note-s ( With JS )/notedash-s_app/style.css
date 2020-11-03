@@ -18,7 +18,6 @@ body {
 }
 
 .wrapper {
-   position: relative;
    width: 100%;
    height: 100%;
    padding: 10px;
@@ -51,6 +50,7 @@ textarea {
    font-family: inherit;
    background-color: #f0eeec;
    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.5);
+   resize: vertical;
 }
 
 input:focus,
@@ -106,6 +106,7 @@ input.submit-btn:focus,
 .item {
    position: relative;
    display: flex;
+   /* height: 150px; */
    flex-direction: column;
    padding: 10px;
    background-color: #dfdbd6;
@@ -123,10 +124,10 @@ input.submit-btn:focus,
 }
 
 .item p {
-   display: -webkit-box;
-   -webkit-line-clamp: 3;
-   -webkit-box-orient: vertical;
+   white-space: nowrap;
+   width: 150px;
    overflow: hidden;
+   text-overflow: ellipsis;
 }
 
 .delete-item {
@@ -153,6 +154,7 @@ input.submit-btn:focus,
 
 .open-edit {
    align-self: flex-end;
+   margin-top: auto !important;
 }
 
 .note-item,
@@ -177,7 +179,7 @@ input.submit-btn:focus,
 
    visibility: hidden;
    width: 100%;
-   height: 100%;
+   height: 100vh;
    padding: 1.2rem;
    display: flex;
    flex-direction: column;
@@ -196,7 +198,6 @@ input.submit-btn:focus,
    position: relative;
    border-radius: 10px;
    width: 100%;
-   height: 70%;
    font-size: 1.3rem;
    background-color: #d9e4dd;
 }
@@ -206,7 +207,6 @@ nav.nav-modal {
    border-top-left-radius: 10px;
    border-top-right-radius: 10px;
    background-color: #cdc9c3;
-   /* background-color: #fbf7f0; */
 }
 
 .nav-modal-links {
@@ -219,9 +219,9 @@ nav.nav-modal {
 
 .user-note {
    position: relative !important;
-   height: 100%;
-   width: 100%;
-   padding: 1.2rem;
+   padding: 1rem;
+   display: flex;
+   flex-direction: column;
 }
 
 input:disabled,
@@ -231,7 +231,12 @@ textarea:disabled {
 }
 
 .edit-box {
+   position: relative;
    margin-bottom: 1.5rem;
+}
+
+.edit-box.area {
+   width: 100%;
 }
 
 .edit-text-modal {
@@ -240,7 +245,8 @@ textarea:disabled {
 }
 
 textarea.edit-text-modal {
-   min-height: 50%;
+   width: 100%;
+   resize: vertical;
 }
 
 .close-modal,
@@ -284,10 +290,6 @@ li.edit-link {
    font-family: inherit;
 }
 
-/* Footer */
-footer {
-}
-
 @media (min-width: 520px) {
    .item h1 {
       width: 270px;
@@ -306,11 +308,15 @@ footer {
    }
 
    .note-container {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: 1fr 1fr;
    }
 
    .item {
       padding: 20px !important;
+   }
+
+   .item p {
+      width: 220px;
    }
 
    .close-modal,
@@ -328,6 +334,10 @@ footer {
    }
 
    .edit-text-modal {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
+   }
+
+   .user-note {
+      padding: 1.5rem;
    }
 }
