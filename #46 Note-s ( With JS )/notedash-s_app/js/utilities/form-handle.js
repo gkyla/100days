@@ -1,5 +1,4 @@
-import CONFIG from '../data/config.js';
-import { saveStorageAndRender } from '../data/storage.js';
+import { getStorage, saveItemAndRender } from '../data/storage.js';
 import noteToObject from './data-format.js';
 
 const input = document.querySelector('input');
@@ -11,20 +10,38 @@ function submitNoteData(e) {
    const inputValue = input.value;
    const textAreaValue = textArea.value;
 
-   if (inputValue == null || inputValue == '') return;
-   if (textAreaValue == null || textAreaValue == '') return;
+   // Trim Whitespace , user cant add note by only typing space inside input & textarea
+   // (For checking user input purpose only)
+   const checkInput = inputValue.trim();
+   const checkTextArea = textAreaValue.trim();
 
-   const getNoteArray = JSON.parse(localStorage.getItem(CONFIG.STORAGE_NAME));
-   const dataLength = getNoteArray.length; // Get Data Array length
+   if (checkInput == null || checkInput == '') return;
+   if (checkTextArea == null || checkTextArea == '') return;
 
-   let uniqueId = 0;
-   while (uniqueId <= dataLength) {
-      uniqueId++; // Increment every submit form to get unique id
+   const storage = getStorage();
+   const id = uniqueId(storage);
+   const note = noteToObject(id, inputValue, textAreaValue);
+   saveItemAndRender(note);
+
+   this.reset();
+}
+
+function uniqueId(storage) {
+   let newId;
+   if (storage.length === 0) {
+      // If storage 0 , id will be 1
+      newId = 1;
+   } else {
+      storage.forEach((el, index) => {
+         // get current id in current index
+         // After that , increment by 1 to get unique id
+         // When the item is deleted it will still get the current id + 1
+
+         newId = storage[index].id + 1;
+      });
    }
 
-   const getNote = noteToObject(uniqueId, inputValue, textAreaValue);
-   saveStorageAndRender(getNote);
-   this.reset();
+   return newId;
 }
 
 export { submitNoteData };
