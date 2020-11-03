@@ -1,23 +1,25 @@
 import { render } from '../render.js';
 import CONFIG from './config.js';
 
-let noteData = JSON.parse(localStorage.getItem(CONFIG.STORAGE_NAME)) || [];
+const getStorage = () => {
+   return JSON.parse(localStorage.getItem(CONFIG.STORAGE_NAME)) || [];
+};
+
+let noteData = getStorage();
+
+const saveStorage = () => {
+   localStorage.setItem(CONFIG.STORAGE_NAME, JSON.stringify(noteData));
+};
 
 const setLocalStorageAndRender = () => {
-   localStorage.setItem(CONFIG.STORAGE_NAME, JSON.stringify(noteData));
+   saveStorage();
    render(noteData);
 };
 
-const saveStorageAndRender = (item) => {
+const saveItemAndRender = (item) => {
    noteData.push(item);
-   localStorage.setItem(CONFIG.STORAGE_NAME, JSON.stringify(noteData));
+   saveStorage();
    render(noteData);
 };
 
-// Without Push item
-const renderSave = () => {
-   render(noteData);
-   localStorage.setItem(CONFIG.STORAGE_NAME, JSON.stringify(noteData));
-};
-
-export { setLocalStorageAndRender, saveStorageAndRender, renderSave };
+export { setLocalStorageAndRender, saveItemAndRender, getStorage };
