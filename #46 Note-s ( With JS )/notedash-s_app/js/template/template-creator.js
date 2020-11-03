@@ -38,12 +38,12 @@ const createItemNote = (note, index) => `
                   disabled
                />
             </div>
-            <div class="edit-box">
+            <div class="edit-box area">
                <label for="textarea-modal">Note</label>
                <textarea
                   name="edit-${index}"
                   id="edit-${index}"
-                  rows="10"
+                  rows="12"
                   cols="30"
                   wrap="hard"
                   class="edit-text-modal"
