@@ -9,6 +9,11 @@ const createItemNote = (note, index) => `
          ${note.text}
       </p>
    </div>
+   <div class="date-item">
+      <i>
+         ${note.createOn}
+      </i>
+   </div>
    <button class="open-edit" id="open-edit">Open</button>
 
    <div class="modal">
@@ -54,7 +59,10 @@ const createItemNote = (note, index) => `
       </div>
    </div>
 </div>
-    
 `;
 
-export { createItemNote };
+const CreateEmptyDataTemplate = () => `
+   <div class="no-item"> <h1>No Note available 😭</h1> </div>
+`;
+
+export { createItemNote, CreateEmptyDataTemplate };
