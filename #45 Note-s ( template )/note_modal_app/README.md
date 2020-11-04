@@ -1,23 +1,23 @@
 # Note-s ( Template / No JS )
 
-# // HTML & CSS 📕 //
+# HTML & CSS 📕
 
 ## [X] Create an html template
 
-## -- [X] Create User Box ( Title & Note )
+### [X] Create User Box ( Title & Note )
 
-## -- [X] Create Note items Container 🍱
+### [X] Create Note items Container 🍱
 
-## -- [X] Make it Responsive 📳
+### [X] Make it Responsive 📳
 
-## -- [X] Make it Beautiful 👌
+### [X] Make it Beautiful 👌
 
-# // Functionality 🐱‍👤 //
+# Functionality 🐱‍👤
 
-## [ ] User can see detail Note ( if available )
+### [ ] User can see detail Note ( if available )
 
-## [ ] Display information when there is no item / note inside container
+### [ ] Display information when there is no item / note inside container
 
-## [ ] User can edit detail Note
+### [ ] User can edit detail Note
 
-## [ ] User can save detail Note
+### [ ] User can save detail Note
