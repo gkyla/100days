@@ -209,6 +209,8 @@ function calculation() {
          case '/':
             total = defineOperator['/'](parsedTotal, parsedAfter);
             break;
+         default:
+            return;
       }
    } else {
       switch (mathOperator) {
@@ -224,6 +226,8 @@ function calculation() {
          case '/':
             total = defineOperator['/'](parsedFirst, parsedSecond);
             break;
+         default:
+            return;
       }
    }
 
