@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   font-family: 'Montserrat', sans-serif;
+   min-height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+img {
+   display: block;
+   object-position: center;
+   width: 100%;
+   height: auto;
+}
+
+.toast p {
+   font-size: 0.8rem;
+   margin-left: 10px;
+   color: white;
+}
+
+.close {
+   padding: 10px;
+   font-size: 1.5rem;
+   cursor: pointer;
+   background: none;
+   border: none;
+   color: white;
+}
+
+.send-box {
+   padding: 20px;
+   border-radius: 10px;
+   display: flex;
+   flex-direction: column;
+   background-color: #222831;
+}
+
+.send-box h1 {
+   color: white;
+}
+
+#open-toast {
+   margin-top: 20px;
+   background: #f2a365;
+   border: 3px solid #eaeaea;
+   font-family: inherit;
+   cursor: pointer;
+   padding: 0.55em 1.2em;
+   border-radius: 10px;
+}
+.toast {
+   opacity: 0;
+   visibility: hidden;
+   background: #30475e;
+   position: fixed;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   padding: 0 10px;
+   display: flex;
+   align-items: center;
+   transition: 0.3s all ease-in;
+}
+
+.toast.open {
+   opacity: 1;
+   visibility: visible;
+}
+
+.toast img {
+   width: 50px;
+   height: 50px;
+}
+
+.toast-content {
+   padding: 0 10px;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   height: 60px;
+}
+
+@media (min-width: 900px) {
+   .toast {
+      position: fixed;
+      margin: 20px 20px 20px auto;
+      bottom: 0;
+      width: 300px;
+      border-radius: 10px;
+   }
+}
