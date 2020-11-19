@@ -1,6 +1,6 @@
 const buttons = document.querySelectorAll('button');
-const show = document.querySelector('.show-chosen-number');
-const historyOperator = document.querySelector('.history-operator');
+const show = document.querySelector('.current-show');
+const historyOperator = document.querySelector('.previous-show');
 
 const calculator = {
    // Base value for calculator object
