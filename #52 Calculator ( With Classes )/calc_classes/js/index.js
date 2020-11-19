@@ -1,12 +1,12 @@
 class Calculator {
-   constructor(currentShow, previousShow) {
-      this.currentShow = currentShow;
-      this.previousShow = previousShow;
+   constructor(currentDisplayShow, previousDisplayShow) {
+      this.currentDisplayShow = currentDisplayShow;
+      this.previousDisplayShow = previousDisplayShow;
 
       this.previousNumber = '';
       this.currentNumber = '';
       this.operator = '';
-      this.totalCompute = '';
+      this.totalCompute = null;
       this.command = '';
       this.equalByOperator = false;
    }
@@ -19,6 +19,7 @@ class Calculator {
    commandHandler(command) {
       switch (command) {
          case 'DEL':
+            // Only delete if currentNumber is not empty
             if (this.currentNumber.length > 0) {
                const deleted = this.currentNumber.slice(0, -1);
                this.currentNumber = deleted;
@@ -34,14 +35,20 @@ class Calculator {
 
    operatorHandler(operator) {
       if (isNaN(this.currentNumber) || this.currentNumber === '') {
-         alert('Insert some number before choosing operator');
+         // Overwrite Operator
+         this.operator = operator;
          return;
+      } else if (this.currentNumber && this.operator && this.previousNumber) {
+         if (this.operator !== operator) {
+            // If previous Operator is not same then overwrite operator
+            this.operator = operator;
+            return;
+         }
       }
       this.operator = operator;
 
       if (this.operator && this.equalByOperator) {
          this.compute();
-         // this.currentShow.innerText = this.previousNumber;
       }
       this.equalByOperator = true;
       this.previousNumber = this.currentNumber.toString();
@@ -70,17 +77,13 @@ class Calculator {
          case '*':
             total = parsedPreviousNumber * parsedCurrentNumber;
             break;
-         case '/':
+         case '÷':
             total = parsedPreviousNumber / parsedCurrentNumber;
             break;
       }
 
-      // if (this.currentNumber === '') {
-      //    this.currentNumber = this.previousNumber;
-      // }
-
       this.currentNumber = total;
-      this.totalCompute = total.toString();
+      this.totalCompute = total;
       this.equalByOperator = false;
    }
 
@@ -88,32 +91,40 @@ class Calculator {
       this.previousNumber = '';
       this.currentNumber = '';
       this.operator = '';
+      this.totalCompute = null;
    }
 
    printLog() {
+      // For checking purpose
       console.log(this);
    }
 
    updateCalculator() {
-      this.currentShow.innerText = this.previousNumber;
-
-      if (this.equalByOperator) {
-         this.previousShow.innerText = `${this.previousNumber} ${this.operator} ${this.currentNumber}`;
+      if (this.equalByOperator === true) {
+         this.previousDisplayShow.innerText = `${this.previousNumber} ${this.operator} ${this.currentNumber}`;
+         if (this.totalCompute === null) {
+            this.currentDisplayShow.innerText = this.currentNumber;
+         } else {
+            this.currentDisplayShow.innerText = this.totalCompute;
+         }
       } else {
-         this.previousShow.innerText = `${this.currentNumber} ${this.operator}`;
-         this.currentShow.innerText = this.currentNumber;
+         this.previousDisplayShow.innerText = `${this.currentNumber} ${this.operator}`;
+         this.currentDisplayShow.innerText = this.currentNumber;
       }
+
+      // Reset After Update
+      this.totalCompute = null;
    }
 }
 
 const numberButton = document.querySelectorAll('[data-number]');
 const operators = document.querySelectorAll('.operator');
 const commands = document.querySelectorAll('.command');
-const currentShow = document.querySelector('.current-show');
-const previousShow = document.querySelector('.previous-show');
+const currentDisplayShow = document.querySelector('.current-show');
+const previousDisplayShow = document.querySelector('.previous-show');
 const equal = document.querySelector('.equal');
 
-const calculator = new Calculator(currentShow, previousShow);
+const calculator = new Calculator(currentDisplayShow, previousDisplayShow);
 
 numberButton.forEach((button) => {
    button.addEventListener('click', () => {
