@@ -1,0 +1,13 @@
+img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   object-position: center;
+   display: inline-block;
+}
+
+.container {
+   display: flex;
+   width: 600px;
+   height: 200px;
+}
