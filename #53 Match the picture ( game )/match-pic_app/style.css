@@ -1,13 +1,50 @@
+body {
+   display: grid;
+   place-content: center;
+   min-height: 100vh;
+}
+
 img {
+   position: relative;
    width: 100%;
    height: 100%;
    object-fit: cover;
    object-position: center;
    display: inline-block;
+   cursor: pointer;
+}
+
+.title {
+   font-family: 'Courier New', Courier, monospace;
+   display: inline-block;
+   text-align: center;
 }
 
 .container {
-   display: flex;
-   width: 600px;
-   height: 200px;
+   padding: 5px;
+   display: grid;
+   gap: 5px;
+   border: 5px solid black;
+   grid-template-columns: repeat(4, 200px);
+   grid-template-rows: repeat(3, 200px);
 }
+
+#selected {
+   transform: scale(1.1);
+}
+
+.match-item {
+   cursor: pointer;
+   position: relative;
+   border: 5px solid black;
+}
+
+/* .closed::after {
+   position: absolute;
+   content: '';
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: red;
+} */
