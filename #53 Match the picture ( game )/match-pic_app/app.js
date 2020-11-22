@@ -1,14 +1,92 @@
 class MatchPicture {
-   constructor({ firstImgUrl, secondImgUrl, container }) {
+   constructor({ firstImgUrl, secondImgUrl, container, levelEl, startEl }) {
       this.firstImgUrl = firstImgUrl;
       this.secondImgUrl = secondImgUrl;
       this.container = container;
+      this.levelEl = levelEl;
+      this.startEl = startEl;
 
-      this.numberOfPicutre = 12;
-      this.howManyForEachPicture = this.numberOfPicutre / 2;
+      // Default Value
+      this.totalPic = 8;
+      this.totalForEachPicturePair = this.totalPic / 2;
    }
 
-   randomizeImgPlacement() {
+   #level() {
+      this.levelEl.addEventListener('change', () => {
+         const countElement = document.querySelectorAll('#counter');
+         countElement.forEach((counter) => counter.remove());
+
+         this.startEl.style.display = '';
+         let diff = this.levelEl.selectedOptions[0].value;
+         this.container.setAttribute('data-diff', diff);
+
+         switch (diff) {
+            case 'easy':
+               this.totalPic = 8;
+               this.totalForEachPicturePair = this.totalPic / 2;
+               break;
+            case 'medium':
+               this.totalPic = 20;
+               this.totalForEachPicturePair = this.totalPic / 2;
+               break;
+            case 'hard':
+               this.totalPic = 32;
+               this.totalForEachPicturePair = this.totalPic / 2;
+               break;
+            case 'expert':
+               this.totalPic = 40;
+               this.totalForEachPicturePair = this.totalPic / 2;
+         }
+         this.container.removeAttribute('data-win');
+         this.renderGame();
+      });
+   }
+
+   #start(itemEl) {
+      let duration = 3;
+      const countElement = document.querySelector('#counter');
+
+      this.startEl.addEventListener('click', () => {
+         const timeOutEl = setInterval(() => {
+            if (duration <= 0) {
+               itemEl.forEach((item) => {
+                  item.classList.add('closed');
+                  this.container.style.pointerEvents = '';
+               });
+               countElement.remove();
+               clearInterval(timeOutEl);
+            } else {
+               countElement.innerHTML = `<p>You have ${duration} Seconds to Remembering the picture</p>`;
+            }
+            duration -= 1;
+         }, 1000);
+
+         itemEl.forEach((item) => {
+            item.classList.remove('closed');
+         });
+         this.startEl.style.display = 'none';
+      });
+   }
+
+   #reset() {
+      // Create Element for Reset Button
+      const btn = document.createElement('button');
+      btn.id = 'reset';
+      btn.classList.add('btn');
+      btn.innerText = 'Reset';
+
+      this.container.appendChild(btn);
+      btn.addEventListener('click', () => {
+         this.container.setAttribute('data-win', 'false');
+
+         // Displaying Start button
+         this.startEl.style.display = '';
+
+         this.renderGame();
+      });
+   }
+
+   #randomizeImgPlacement() {
       let itemContainer = this.container;
       let i;
       for (i = itemContainer.children.length; i >= 0; i--) {
@@ -18,48 +96,43 @@ class MatchPicture {
       }
    }
 
-   createImage() {
-      let idForFirstImg = 'first';
-      let idForSecondImg = 'second';
+   #createImage() {
+      let i = 1;
+      let x = 1;
 
-      for (let i = 1; i <= this.howManyForEachPicture; i++) {
+      while (i <= this.totalForEachPicturePair) {
+         i++;
          const div = document.createElement('div');
-         const img = document.createElement('img');
-
          div.classList.add('match-item', 'closed');
-         img.src = this.firstImgUrl;
-         img.id = idForFirstImg;
-
-         div.appendChild(img);
+         div.innerHTML = `<img src=${this.firstImgUrl} id="first">`;
          this.container.appendChild(div);
       }
-      for (let i = 1; i <= this.howManyForEachPicture; i++) {
+      while (x <= this.totalForEachPicturePair) {
+         x++;
          const div = document.createElement('div');
-         const img = document.createElement('img');
-
          div.classList.add('match-item', 'closed');
-         img.src = this.secondImgUrl;
-         img.id = idForSecondImg;
-
-         div.appendChild(img);
-
+         div.innerHTML = `<img src=${this.secondImgUrl} id="second">`;
          this.container.appendChild(div);
       }
    }
 
-   checkWinner(selectedElement) {
+   #checkWinner(selectedElement) {
       const checkingElement = document.querySelectorAll(
          `[${selectedElement}=true]`
       );
-      if (checkingElement.length === this.numberOfPicutre) {
+      if (checkingElement.length === this.totalPic) {
+         this.container.setAttribute('data-win', 'true');
          this.container.innerHTML = `
-         Selamat boskuhhh
+         <h1>Congratulations  !!!</h1>
          `;
+         this.#reset();
       }
    }
 
-   _matchOnClick() {
+   #matchOnClick() {
       const matchItems = document.querySelectorAll('.match-item');
+      this.#start(matchItems);
+
       let counter = 0;
       let firstId = null;
       let secondId = null;
@@ -69,6 +142,9 @@ class MatchPicture {
             // Targeting to img
             const child = item.children[0];
             item.setAttribute('id', 'selected');
+
+            // Disable click event when clicking on targeted img
+            item.style.pointerEvents = 'none';
             counter++;
 
             switch (counter) {
@@ -77,11 +153,10 @@ class MatchPicture {
                   break;
                case 2:
                   secondId = child.id;
-
-                  // while counter 2 , define selected element
+                  // while counter is 2 , define selected element
                   const selected = document.querySelectorAll('#selected');
-
                   // If its same then hidden it from browser
+
                   if (firstId === secondId) {
                      setTimeout(() => {
                         selected.forEach((selectEl) => {
@@ -89,16 +164,19 @@ class MatchPicture {
                            selectEl.setAttribute('data-matching', 'true');
                            selectEl.removeAttribute('id');
                         });
-                        this.checkWinner('data-matching');
-                     }, 1000);
+                        this.#checkWinner('data-matching');
+                     }, 300);
                   } else {
                      // Otherwise remove "selected" id / id attribute
                      setTimeout(() => {
                         selected.forEach((selectEl) => {
                            selectEl.removeAttribute('id');
                            selectEl.classList.add('closed');
+
+                           // Enable it again when 2 image are not match
+                           selectEl.style.pointerEvents = '';
                         });
-                     }, 1000);
+                     }, 300);
                   }
 
                   // Reset while counter is 2
@@ -110,7 +188,6 @@ class MatchPicture {
                   console.error('ada error nich');
                   return;
             }
-            console.log({ firstId, secondId, counter });
 
             item.classList.remove('closed');
          });
@@ -118,19 +195,29 @@ class MatchPicture {
    }
 
    renderGame() {
-      this.createImage();
-      this.randomizeImgPlacement();
-      this._matchOnClick();
+      // Reset Container & disable pointerEvents ( user cant click )
+      this.container.innerHTML = '';
+      this.container.style.pointerEvents = 'none';
+
+      // Create Element for counter Element
+      const countElement = document.createElement('div');
+      countElement.id = 'counter';
+      this.container.insertAdjacentElement('beforebegin', countElement);
+
+      this.#createImage();
+      this.#randomizeImgPlacement();
+      this.#matchOnClick();
+      this.#level();
    }
 }
 
 let matchPicture = new MatchPicture({
-   firstImgUrl: './img/garox.jpg', // Path to first img
-   secondImgUrl: './img/fearless.jpg', // Path to second img
-   container: document.querySelector('.container'), // Container for items
+   firstImgUrl: './img/pic_1.jpg', // Path to first img
+   secondImgUrl: './img/pic_2.jpg', // Path to second img
+   container: document.querySelector('.container'), // Container element for items
+   levelEl: document.querySelector('select[name="diff"]'), // Select element
+   startEl: document.querySelector('#start'), // Button Element
 });
 
+// Start & Rendering Game
 matchPicture.renderGame();
-
-// Reffrence
-// matchPicture.gameLevel('')
