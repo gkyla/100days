@@ -1,0 +1,304 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    max-width: 1280px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.wrapper{
+    margin: 0 auto;
+    max-width: 1240px;
+    height: 100%;
+    /* width: 90%; */
+}
+
+.nav-wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+    /* height: 2000px; */
+}
+
+nav{
+    /* background-color: red; */
+    height: 100px;
+    /* display: flex; */
+    justify-content: space-around;
+    align-items: center;
+}
+
+.burger{
+    display: none;
+}
+
+.burger > div{
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background-color: black;
+}
+
+/* .sty{
+    display: table
+} */
+
+/* .logo{
+    display: flex;
+} */
+
+.nav-links{
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-links li {
+    list-style: none;
+}
+
+.nav-links a{
+    display: inline;
+    padding: 5px;
+    color: black;
+    text-decoration: none;
+}
+
+ul li.active a{
+    padding-bottom: 37px !important;
+    border-bottom: 3px solid #00E1FF;
+}
+
+/* Jumbotron */
+
+.jumbotron{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 700px;
+    background-color: rgb(46, 45, 45);
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+    width: 100%;
+}
+
+.box a{
+    margin: 20px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    border: 2px solid white;
+    padding: 15px 30px;
+}
+
+.box h4{
+    text-transform: uppercase;
+    font-size: 60px;
+    font-weight: 300;
+}
+
+/* Brand */
+
+.branding{
+    min-height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    /* align-content: flex-start; */
+}
+
+.brand{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.brand p{
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: rgb(46, 45, 45);
+    border-bottom: 3px solid #00E1FF;
+    padding-bottom: 20px;
+}
+
+.branding img{
+    width: 100px;
+    display: block;
+}
+
+/* full */
+
+.full{
+    width: 100%;
+    height: 575px;
+    background-color: #F7F7F7;
+    padding-top: 52px;
+    overflow: hidden;
+}
+
+.choose{
+    display: flex;
+    justify-content: center;
+}
+
+.choose a{
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-top: 2px solid grey;
+    border-left: 2px solid grey;
+    border-bottom: 2px solid grey;
+    padding: 15px 10vw;
+}
+
+.choose a.blue{
+    border: 2px solid #00E1FF
+}
+
+.phone{
+    margin-top: 78px;
+    display: flex;
+    justify-content: space-evenly;
+    align-content: flex-start;
+}
+
+.p-img{
+    padding: 2px;
+    display: flex;
+}
+
+.p-img img{
+    width: 80%;
+}
+
+.res{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.res h4{
+    font-size: 40px;
+    font-weight: 300;
+}
+
+.res a{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 15px 30px ;
+    border: 2px solid #00E1FF;
+}
+
+/* Black */
+.black{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    height: 714px;
+    background-color: rgb(46, 45, 45);
+    overflow: hidden;
+}
+
+.title{
+    margin-top: 94px;
+    padding-bottom: 20px;
+}
+
+.title .garis{
+    margin: 20px auto;
+    width: 170px;
+    border-top: 2px solid #00E1FF;
+}
+
+.title h4{
+    color: white;
+    font-size: 40px;
+}
+
+.gambar{
+    margin-top: 245px;
+}
+
+.gambar img{
+    width: 100%;
+}
+/* chart */
+
+.chart{
+    height: 861px;
+}
+
+@media screen and (max-width:1024px){
+    .nav-links{
+        width: 60%;
+    }
+
+    .brand{
+        width: 50%;
+    }
+
+
+}
+
+@media screen and (max-width:768px){
+    .nav-links{
+        display: none;
+    }
+
+    .burger{
+        display: block;
+
+    }
+
+    .p-img img{
+        width: 80%;
+    }
+    
+
+}
+
+@media screen and (max-width:600px){
+
+    .phone{
+        /* margin-top: 78px; */
+        display: block;
+        /* position: absolute; */
+        /* justify-content: space-between; */
+    }
+
+    .p-img img{
+        width: 50%;
+    }
+
+    .brand{
+        padding: 50px 0;
+        width: 100%;
+    }
+}
