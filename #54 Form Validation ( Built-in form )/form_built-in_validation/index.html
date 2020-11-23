@@ -1,0 +1,73 @@
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width , initial-scale=1.0" />
+      <title>Form built-in validation</title>
+      <link rel="stylesheet" href="style.css" />
+   </head>
+   <body>
+      <div class="box">
+         <div class="top">
+            <button class="btn" id="close">X</button>
+            <h1>Registration</h1>
+         </div>
+         <div class="bottom">
+            <form id="form" method="POST">
+               <div class="name-field">
+                  <label for="name">Name</label><br />
+                  <input
+                     class="input"
+                     type="text"
+                     id="name"
+                     required
+                     pattern="\S[a-z A-Z]+\S"
+                  />
+               </div>
+               <div class="email-field">
+                  <label for="email">Email</label><br />
+                  <input
+                     class="input"
+                     type="text"
+                     id="email"
+                     required
+                     pattern="(\w+|\d+)[_.]?(\w+|\d+)@\w+\.\w+\.?\w+"
+                  />
+               </div>
+               <div class="phonenumber-field">
+                  <label for="phone">Phone Number</label>
+                  <input
+                     class="input"
+                     type="text"
+                     id="phone"
+                     placeholder="ex: +6281355537865"
+                     required
+                     minlength="6"
+                     pattern="\+(62)\d+"
+                  />
+               </div>
+               <div class="password-field">
+                  <label for="password">Password</label><br />
+                  <input
+                     class="input"
+                     type="password"
+                     id="password"
+                     placeholder="Min require 6 password code"
+                     required
+                     minlength="6"
+                  />
+               </div>
+               <button type="submit">Submit</button>
+            </form>
+         </div>
+      </div>
+   </body>
+   <script>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', (e) => {
+         e.preventDefault();
+
+         alert('Data Submitted');
+         form.reset();
+      });
+   </script>
+</html>
