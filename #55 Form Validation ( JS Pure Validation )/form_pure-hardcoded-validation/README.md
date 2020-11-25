@@ -1,3 +1,6 @@
+## Info
+- Trying build a Form validation with pure logic ( without constraint api & built-in html form attribute )
+
 ### Learning Resource
 
 -  [MDN Form Validation ( Client Side )](https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation)
