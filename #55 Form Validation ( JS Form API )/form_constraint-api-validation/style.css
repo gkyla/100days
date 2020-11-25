@@ -77,6 +77,16 @@ input.valid {
    border-bottom: 2px solid green;
 }
 
+label {
+   display: flex;
+}
+
+label[data-isvalid]::after {
+   content: 'benar';
+   color: green;
+   margin-left: auto;
+}
+
 input.invalid {
    border-bottom: 2px solid red;
 }
@@ -86,7 +96,7 @@ input.invalid {
    color: red;
 }
 
-#form label::before {
+label::before {
    content: '*';
    color: red;
    margin-right: 5px;

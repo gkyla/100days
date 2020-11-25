@@ -1,5 +1,4 @@
 const form = document.getElementById('form');
-const phoneInput = document.querySelector('#phone');
 const inputs = document.querySelectorAll('input');
 const firstPassword = document.querySelector('#password');
 const secondPassword = document.querySelector('#re-password');
@@ -12,17 +11,20 @@ form.addEventListener('submit', (e) => {
    inputs.forEach((input) => {
       const validate = input.validity;
 
-      if (!validate.valid) {
-         input.nextElementSibling.innerHTML = `Please fill ${input.previousElementSibling.textContent}`;
-         input.className = 'invalid';
-      } else {
-         input.className = 'valid';
-      }
-
       // If input type is not match and value is not empty
       if (validate.typeMismatch && !validate.valueMissing) {
          input.nextElementSibling.innerHTML = 'Please fill the right format';
          input.className = 'invalid';
+      }
+
+      if (!validate.valid) {
+         input.nextElementSibling.innerHTML = `Please fill ${input.previousElementSibling.textContent}`;
+         input.className = 'invalid';
+
+         // TODO If not matching with regex pattern border-bottom should red
+         //  Or known as invalid
+      } else {
+         input.className = 'valid';
       }
    });
 
@@ -30,53 +32,74 @@ form.addEventListener('submit', (e) => {
       secondPassword.className = 'invalid';
    } else {
       // If first password not equal to second password
-      if (firstPassword.value !== secondPassword.value) {
-         secondPassword.nextElementSibling.innerHTML =
-            'Your second password must be same like the first one';
-         secondPassword.className = 'invalid';
+      if (firstPassword.value.length >= 6 && secondPassword.value.length >= 6) {
+         if (firstPassword.value !== secondPassword.value) {
+            secondPassword.nextElementSibling.innerHTML =
+               'Second password must be same like the first one';
+            secondPassword.className = 'invalid';
+         } else {
+            secondPassword.className = 'valid';
+         }
       } else {
-         secondPassword.className = 'valid';
+         firstPassword.className = 'invalid';
+         secondPassword.className = 'invalid';
       }
    }
+
+   // TODO submitting only if all input valid
 
    e.preventDefault();
 });
 
-inputs.forEach((inputElement) => {
-   const validate = inputElement.validity;
-   const nextEl = inputElement.nextElementSibling;
+inputs.forEach((inputEl) => {
+   const validate = inputEl.validity;
+   const nextEl = inputEl.nextElementSibling;
 
-   inputElement.addEventListener('input', () => {
-      if (inputElement.getAttribute('id') === 'phone') {
+   inputEl.addEventListener('input', () => {
+      if (inputEl.getAttribute('id') === 'phone') {
          // Value only from phone number input
          // Regex Pattern Matching
-         const testPhone = phonePattern.test(inputElement.value);
+         const testPhone = phonePattern.test(inputEl.value);
 
          if (validate.valueMissing) {
-            inputElement.className = 'phone invalid';
+            inputEl.className = 'invalid';
          } else {
             if (testPhone) {
-               inputElement.className = 'phone valid';
+               inputEl.className = 'valid';
                nextEl.innerHTML = '';
             } else {
                nextEl.innerHTML = 'Please fill the right format';
-               inputElement.className = 'phone invalid';
+               inputEl.className = 'invalid';
             }
+         }
+      } else if (inputEl === firstPassword || inputEl === secondPassword) {
+         if (inputEl.value.length <= 6) {
+            nextEl.innerHTML = 'Please fill Atleast 6 length of password';
+            inputEl.className = 'invalid';
+         } else {
+            nextEl.innerHTML = '';
+            inputEl.className = 'valid';
          }
       } else {
          // These inputs not from Phone's input
-         const prevEl = inputElement.previousElementSibling;
+         const prevEl = inputEl.previousElementSibling;
 
          if (validate.valueMissing) {
             nextEl.innerHTML = `Please fill ${prevEl.textContent}`;
-            inputElement.className = 'invalid';
+            inputEl.className = 'invalid';
          } else if (validate.typeMismatch && !validate.valueMissing) {
             nextEl.innerHTML = 'Please fill the right format';
-            inputElement.className = 'invalid';
+            inputEl.className = 'invalid';
          } else {
             nextEl.innerHTML = '';
-            inputElement.className = 'valid';
+            inputEl.className = 'valid';
          }
+      }
+
+      if (inputEl.classList.contains('valid')) {
+         inputEl.previousElementSibling.setAttribute('data-isvalid', '');
+      } else {
+         inputEl.previousElementSibling.removeAttribute('data-isvalid');
       }
    });
 });
