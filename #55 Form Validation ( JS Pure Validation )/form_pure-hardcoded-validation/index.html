@@ -1,0 +1,57 @@
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width , initial-scale=1.0" />
+      <title>Form built-in validation</title>
+      <link rel="stylesheet" href="style.css" />
+   </head>
+   <body>
+      <div class="box">
+         <div class="top">
+            <button class="btn" id="close">X</button>
+            <h1>Registration</h1>
+         </div>
+         <div class="bottom">
+            <form id="form" novalidate>
+               <div class="name-field">
+                  <label for="name">Name</label>
+                  <input class="input" type="text" id="name" />
+                  <span class="error-msg"></span>
+               </div>
+               <div class="email-field">
+                  <label for="email">Email</label>
+                  <input class="input" type="email" id="email" />
+                  <span class="error-msg"></span>
+               </div>
+               <div class="phonenumber-field">
+                  <label for="phone">Phone Number</label>
+                  <input
+                     class="input"
+                     type="text"
+                     id="phone"
+                     placeholder="ex: +6281355537865"
+                  />
+                  <span class="error-msg"></span>
+               </div>
+               <div class="password-field">
+                  <label for="password">Password</label>
+                  <input
+                     class="input"
+                     type="password"
+                     id="password"
+                     placeholder="Min require 6 password code"
+                  />
+                  <span class="error-msg"></span>
+               </div>
+               <div class="re-password-field">
+                  <label for="password">Confirm Password</label>
+                  <input class="input" type="password" id="confirm-password" />
+                  <span class="error-msg"></span>
+               </div>
+               <button type="submit">Submit</button>
+            </form>
+         </div>
+      </div>
+      <script src="./js/app.js"></script>
+   </body>
+</html>
