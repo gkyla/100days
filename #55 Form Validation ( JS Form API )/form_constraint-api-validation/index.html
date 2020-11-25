@@ -14,12 +14,14 @@
          <div class="bottom">
             <form id="form" novalidate>
                <div class="name-field">
-                  <label for="name">Name</label><br />
-                  <input class="input" type="text" id="name" />
+                  <label for="name">Name</label>
+                  <input class="input" type="text" id="name" required />
+                  <span class="error-msg"></span>
                </div>
                <div class="email-field">
-                  <label for="email">Email</label><br />
-                  <input class="input" type="text" id="email" required />
+                  <label for="email">Email</label>
+                  <input class="input" type="email" id="email" required />
+                  <span class="error-msg"></span>
                </div>
                <div class="phonenumber-field">
                   <label for="phone">Phone Number</label>
@@ -28,10 +30,12 @@
                      type="text"
                      id="phone"
                      placeholder="ex: +6281355537865"
+                     required
                   />
+                  <span class="error-msg"></span>
                </div>
                <div class="password-field">
-                  <label for="password">Password</label><br />
+                  <label for="password">Password</label>
                   <input
                      class="input"
                      type="password"
@@ -39,10 +43,16 @@
                      placeholder="Min require 6 password code"
                      required
                   />
+                  <span class="error-msg"></span>
                </div>
                <div class="re-password-field">
-                  <label for="password">Confirm Password</label><br />
-                  <input class="input" type="password" id="password" required />
+                  <label for="password">Confirm Password</label>
+                  <input
+                     class="input"
+                     type="password"
+                     id="re-password"
+                     required
+                  />
                   <span class="error-msg"></span>
                </div>
                <button type="submit">Submit</button>

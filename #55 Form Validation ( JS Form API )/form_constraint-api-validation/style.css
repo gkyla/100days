@@ -65,7 +65,7 @@ button#close {
    color: #20225e;
 }
 
-#form input:not([type='button']) {
+input:not([type='button']) {
    width: 100%;
    padding: 0.5rem 1rem;
    border: none;
@@ -73,16 +73,17 @@ button#close {
    display: inline-block;
 }
 
-#form input:valid {
-   background-color: rgb(237, 248, 237);
+input.valid {
+   border-bottom: 2px solid green;
 }
 
-#form input:focus #form input:valid {
-   background-color: rgb(237, 248, 237);
+input.invalid {
+   border-bottom: 2px solid red;
 }
 
-#form .input:invalid {
-   border-bottom-color: red;
+.error-msg {
+   font-size: 0.8rem;
+   color: red;
 }
 
 #form label::before {
