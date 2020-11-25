@@ -6,6 +6,10 @@
 
 -  [W3School JS Validation](https://www.w3schools.com/js/js_validation_api.asp)
 
+-  [Regex email info](https://www.regular-expressions.info/email.html)
+
+-  [HTML Input Type email](https://html.spec.whatwg.org/multipage/input.html#valid-e-mail-address)
+
 ### Design
 
 -  [Submit form Design](https://uidesigndaily.com/posts/sketch-submit-form-day-1189)
