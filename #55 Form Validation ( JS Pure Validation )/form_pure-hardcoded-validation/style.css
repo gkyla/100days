@@ -23,11 +23,11 @@ body {
 .top {
    border-radius: 10px 10px 0 0;
    position: relative;
-   color: white;
+   color: rgb(88, 88, 88);
    width: 100%;
    height: 100%;
    padding: 2.5rem 0;
-   background-color: #20225e;
+   background-color: #fbd46d;
    text-align: center;
 }
 
@@ -45,8 +45,8 @@ button#close {
    width: 38px;
    height: 38px;
    border: none;
-   color: inherit;
-   background-color: #2f316e;
+   color: rgb(88, 88, 88);
+   background-color: #f8dc90;
    border-radius: 50%;
    cursor: pointer;
 }
@@ -95,10 +95,6 @@ input.invalid {
    border-bottom: 2px solid red;
 }
 
-/* label[data-is-invalid]::after {
-   content: '';
-} */
-
 .error-msg {
    font-size: 0.8rem;
    color: red;
@@ -119,15 +115,15 @@ label::before {
    margin: 2rem;
    padding: 1rem 3rem;
    border-radius: 30px;
-   background-color: #2f316e;
+   background-color: #fbd46d;
    transition: 0.2s ease-in all;
-   color: white;
+   color: rgb(88, 88, 88);
    border: none;
    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
 
 #form button[type='submit']:hover {
-   background-color: #464aa5;
+   background-color: #ffbb00;
 }
 
 #form > div {
