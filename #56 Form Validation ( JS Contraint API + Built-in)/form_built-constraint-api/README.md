@@ -1,5 +1,5 @@
 ## Info
-- Trying to build a Form validation with pure logic ( without constraint api & built-in html form attribute )
+- Trying to build a Form validation with constraint api & built-in
 
 ### Learning Resource
 
