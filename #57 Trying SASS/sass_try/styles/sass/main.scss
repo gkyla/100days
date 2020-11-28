@@ -1,0 +1,92 @@
+@use 'modules/mixin' as helper;
+
+body {
+   background-color: #eaeaea;
+   font-family: 'Poppins', sans-serif;
+}
+
+img {
+   width: 100%;
+   height: 300px;
+   object-fit: cover;
+   object-position: center;
+}
+
+$sidebarColor: #151e4b;
+
+
+section{
+    min-height: 100vh;
+    @include helper.flex(row)
+}
+
+.color-lighten-item{
+   @include helper.colorLighten(#0a043c)
+}
+
+.color-darken-item{   
+   @include helper.colorDarken(#f8f7de)
+}
+ 
+
+.container {
+   width: 100%;
+   max-width: 1200px;
+   min-height: 600px;
+   margin: 20px auto;
+   background-color: white;
+   border-radius: 20px;
+   padding: 40px;
+}
+
+header {
+    .title {
+       margin-bottom: 40px;
+    }
+ }
+
+main {
+   img {
+      border-radius: 10px;
+   }
+
+   button {
+   @include helper.buttonStyle(white,10px , 1px solid black);
+   margin-top: 30px;
+   }
+}
+
+.main-box {
+   @include helper.flex(row);
+   gap: 10px;
+
+   article {
+      @include helper.gridColumn(repeat(3, 1fr), 20px);
+
+      h1 {
+         font-size: 1.4em;
+      }
+   }
+
+   aside {
+      @include helper.flex(column);
+      padding: 20px;
+      height: min-content;
+      background-color: $sidebarColor;
+      color: white;
+      border-radius: 10px;
+
+      .content {
+         padding: 20px 0;
+
+         h1 {
+            font-size: 1.4em;
+         }
+
+         button {
+            @include helper.buttonStyle(white,10px, 1px solid black);
+            margin-top: 50px;
+         }
+      }
+   }
+}

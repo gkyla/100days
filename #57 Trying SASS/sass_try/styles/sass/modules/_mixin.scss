@@ -1,0 +1,57 @@
+@mixin flex($direction) {
+   display: flex;
+   flex-direction: $direction;
+}
+
+@mixin gridColumn($column, $gap: 0) {
+   display: grid;
+   grid-template-columns: $column;
+   gap: $gap;
+}
+
+@mixin buttonStyle($backgroundColor, $radius , $border:none) {
+   background-color: $backgroundColor;
+   border-radius: $radius;
+   padding: 10px 20px;
+   border:  $border;
+   cursor: pointer;
+
+   &{
+      transition: 0.2s ease-in;
+   }
+
+   @if $backgroundColor == white{
+      color: black;
+         
+      &:hover{
+         background-color: rgb(221, 219, 219)
+      }
+
+   } @else {
+      color:  white;
+
+      &:hover{
+         background-color: rgb(105, 105, 105)
+      }
+   }
+}
+
+@mixin colorLighten($colorName){
+   @for $i from 1 through 10 {
+      &:nth-of-type(#{$i}){
+         padding: 17px;
+         background-color: lighten($color: $colorName, $amount: $i * 5%);
+      }
+   }
+}
+
+@mixin colorDarken($colorName){
+   $index: 1;
+   @while $index <= 10 {
+      &:nth-of-type(#{$index}){
+         padding: 17px; 
+         background-color: darken($color: $colorName, $amount: $index * 5%);
+      }
+      $index: $index + 1
+   }
+}
