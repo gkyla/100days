@@ -56,6 +56,12 @@ section {
   padding: 17px;
   background-color: #5e4cf3;
 }
+.color-lighten-item:first-of-type {
+  border-radius: 10px 10px 0 0;
+}
+.color-lighten-item:last-of-type {
+  border-radius: 0 0 10px 10px;
+}
 
 .color-darken-item:nth-of-type(1) {
   padding: 17px;
@@ -96,6 +102,12 @@ section {
 .color-darken-item:nth-of-type(10) {
   padding: 17px;
   background-color: #b1ac26;
+}
+.color-darken-item:first-of-type {
+  border-radius: 10px 10px 0 0;
+}
+.color-darken-item:last-of-type {
+  border-radius: 0 0 10px 10px;
 }
 
 .container {
@@ -173,6 +185,72 @@ main button:hover {
 }
 .main-box aside .content button:hover {
   background-color: #dddbdb;
+}
+
+.social-display .youtube {
+  background-color: red;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  display: inline-block;
+}
+.social-display .facebook {
+  background-color: #4f4ff8;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  display: inline-block;
+}
+.social-display .soundcloud {
+  background-color: #fa6622;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  display: inline-block;
+}
+.social-display .gojek {
+  background-color: green;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  display: inline-block;
+}
+.social-display .whatsapp {
+  background-color: #00e600;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  display: inline-block;
+}
+.social-display .snapchat {
+  background-color: yellow;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.picture-options picture {
+  height: fit-content;
+}
+.picture-options picture .picture-1 {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  position: relative;
+  border-radius: 50%;
+}
+.picture-options picture .picture-1::after, .picture-options picture .picture-1::after {
+  position: absolute;
+  content: "Perfect circle";
+  margin-top: 20px;
+}
+.picture-options picture .picture-2 {
+  width: 250px;
+  height: 250px;
+  display: inline-block;
+  position: relative;
+  margin-left: 20px;
 }
 
 /*# sourceMappingURL=main.css.map */

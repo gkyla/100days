@@ -9,49 +9,75 @@
    gap: $gap;
 }
 
-@mixin buttonStyle($backgroundColor, $radius , $border:none) {
-   background-color: $backgroundColor;
-   border-radius: $radius;
-   padding: 10px 20px;
-   border:  $border;
-   cursor: pointer;
+@mixin pictureFactory($width, $circle: false) {
+   // width & height must same in order to create perfect circle
+   width: $width;
+   height: $width;
+   display: inline-block;
+   position: relative;
 
-   &{
-      transition: 0.2s ease-in;
-   }
+   @if $circle {
+      border-radius: 50%;
 
-   @if $backgroundColor == white{
-      color: black;
-         
-      &:hover{
-         background-color: rgb(221, 219, 219)
-      }
-
-   } @else {
-      color:  white;
-
-      &:hover{
-         background-color: rgb(105, 105, 105)
+      &::after,
+      &::after {
+         position: absolute;
+         content: 'Perfect circle';
+         margin-top: 20px;
       }
    }
 }
 
-@mixin colorLighten($colorName){
+@mixin buttonStyle($backgroundColor, $radius, $border: none) {
+   background-color: $backgroundColor;
+   border-radius: $radius;
+   padding: 10px 20px;
+   border: $border;
+   cursor: pointer;
+
+   & {
+      transition: 0.2s ease-in;
+   }
+
+   @if $backgroundColor == white {
+      color: black;
+
+      &:hover {
+         background-color: rgb(221, 219, 219);
+      }
+   } @else {
+      background-color: lighten($color: $backgroundColor, $amount: 5%);
+   }
+}
+
+@mixin colorLighten($colorName) {
    @for $i from 1 through 10 {
-      &:nth-of-type(#{$i}){
+      &:nth-of-type(#{$i}) {
          padding: 17px;
          background-color: lighten($color: $colorName, $amount: $i * 5%);
       }
    }
+   @include firstLastRadius();
 }
 
-@mixin colorDarken($colorName){
+@mixin colorDarken($colorName) {
    $index: 1;
    @while $index <= 10 {
-      &:nth-of-type(#{$index}){
-         padding: 17px; 
+      &:nth-of-type(#{$index}) {
+         padding: 17px;
          background-color: darken($color: $colorName, $amount: $index * 5%);
       }
-      $index: $index + 1
+      $index: $index + 1;
+   }
+   @include firstLastRadius();
+}
+
+@mixin firstLastRadius {
+   &:first-of-type {
+      border-radius: 10px 10px 0 0;
+   }
+
+   &:last-of-type {
+      border-radius: 0 0 10px 10px;
    }
 }

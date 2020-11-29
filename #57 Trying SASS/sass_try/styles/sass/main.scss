@@ -1,8 +1,13 @@
 @use 'modules/mixin' as helper;
 
+// Variables
+$sidebarColor: #151e4b;
+$font: 'Poppins', sans-serif;
+$gray: #eaeaea;
+
 body {
-   background-color: #eaeaea;
-   font-family: 'Poppins', sans-serif;
+   background-color: $gray;
+   font-family: $font;
 }
 
 img {
@@ -12,22 +17,18 @@ img {
    object-position: center;
 }
 
-$sidebarColor: #151e4b;
-
-
-section{
-    min-height: 100vh;
-    @include helper.flex(row)
+section {
+   min-height: 100vh;
+   @include helper.flex(row);
 }
 
-.color-lighten-item{
-   @include helper.colorLighten(#0a043c)
+.color-lighten-item {
+   @include helper.colorLighten(#0a043c);
 }
 
-.color-darken-item{   
-   @include helper.colorDarken(#f8f7de)
+.color-darken-item {
+   @include helper.colorDarken(#f8f7de);
 }
- 
 
 .container {
    width: 100%;
@@ -40,10 +41,10 @@ section{
 }
 
 header {
-    .title {
-       margin-bottom: 40px;
-    }
- }
+   .title {
+      margin-bottom: 40px;
+   }
+}
 
 main {
    img {
@@ -51,8 +52,8 @@ main {
    }
 
    button {
-   @include helper.buttonStyle(white,10px , 1px solid black);
-   margin-top: 30px;
+      @include helper.buttonStyle(white, 10px, 1px solid black);
+      margin-top: 30px;
    }
 }
 
@@ -84,9 +85,49 @@ main {
          }
 
          button {
-            @include helper.buttonStyle(white,10px, 1px solid black);
+            @include helper.buttonStyle(white, 10px, 1px solid black);
             margin-top: 50px;
          }
+      }
+   }
+}
+
+.social-display {
+   $colorList: (
+      'youtube': red,
+      'facebook': rgb(79, 79, 248),
+      'soundcloud': rgb(250, 102, 34),
+      gojek: green,
+      whatsapp: green,
+      snapchat: yellow,
+   );
+
+   @each $socialNames, $backgroundColor in $colorList {
+      .#{$socialNames} {
+         @if $socialNames == whatsapp {
+            background-color: lighten($color: $backgroundColor, $amount: 20%);
+         } @else {
+            background-color: $backgroundColor;
+         }
+
+         padding: 20px;
+         margin: 10px 0;
+         border-radius: 10px;
+         display: inline-block;
+      }
+   }
+}
+
+.picture-options {
+   picture {
+      height: fit-content;
+      .picture-1 {
+         @include helper.pictureFactory(200px, true);
+      }
+
+      .picture-2 {
+         @include helper.pictureFactory(250px, false);
+         margin-left: 20px;
       }
    }
 }
