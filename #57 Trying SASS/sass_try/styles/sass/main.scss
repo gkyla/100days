@@ -19,21 +19,13 @@ img {
 
 section {
    min-height: 100vh;
-   @include helper.flex(row);
-}
-
-.color-lighten-item {
-   @include helper.colorLighten(#0a043c);
-}
-
-.color-darken-item {
-   @include helper.colorDarken(#f8f7de);
+   @include helper.flex(column ,true);
 }
 
 .container {
    width: 100%;
    max-width: 1200px;
-   min-height: 600px;
+   min-height: 70vh;
    margin: 20px auto;
    background-color: white;
    border-radius: 20px;
@@ -90,6 +82,14 @@ main {
          }
       }
    }
+}
+
+.color-lighten-item {
+   @include helper.colorLighten(#0a043c);
+}
+
+.color-darken-item {
+   @include helper.colorDarken(#f8f7de);
 }
 
 .social-display {

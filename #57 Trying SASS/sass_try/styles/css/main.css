@@ -13,7 +13,85 @@ img {
 section {
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 70vh;
+  margin: 20px auto;
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px;
+}
+
+header .title {
+  margin-bottom: 40px;
+}
+
+main img {
+  border-radius: 10px;
+}
+main button {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: 1px solid black;
+  cursor: pointer;
+  color: black;
+  margin-top: 30px;
+}
+main button {
+  transition: 0.2s ease-in;
+}
+main button:hover {
+  background-color: #dddbdb;
+}
+
+.main-box {
+  display: flex;
   flex-direction: row;
+  gap: 10px;
+}
+.main-box article {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.main-box article h1 {
+  font-size: 1.4em;
+}
+.main-box aside {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  height: min-content;
+  background-color: #151e4b;
+  color: white;
+  border-radius: 10px;
+}
+.main-box aside .content {
+  padding: 20px 0;
+}
+.main-box aside .content h1 {
+  font-size: 1.4em;
+}
+.main-box aside .content button {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: 1px solid black;
+  cursor: pointer;
+  color: black;
+  margin-top: 50px;
+}
+.main-box aside .content button {
+  transition: 0.2s ease-in;
+}
+.main-box aside .content button:hover {
+  background-color: #dddbdb;
 }
 
 .color-lighten-item:nth-of-type(1) {
@@ -110,83 +188,6 @@ section {
   border-radius: 0 0 10px 10px;
 }
 
-.container {
-  width: 100%;
-  max-width: 1200px;
-  min-height: 600px;
-  margin: 20px auto;
-  background-color: white;
-  border-radius: 20px;
-  padding: 40px;
-}
-
-header .title {
-  margin-bottom: 40px;
-}
-
-main img {
-  border-radius: 10px;
-}
-main button {
-  background-color: white;
-  border-radius: 10px;
-  padding: 10px 20px;
-  border: 1px solid black;
-  cursor: pointer;
-  color: black;
-  margin-top: 30px;
-}
-main button {
-  transition: 0.2s ease-in;
-}
-main button:hover {
-  background-color: #dddbdb;
-}
-
-.main-box {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-.main-box article {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.main-box article h1 {
-  font-size: 1.4em;
-}
-.main-box aside {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  height: min-content;
-  background-color: #151e4b;
-  color: white;
-  border-radius: 10px;
-}
-.main-box aside .content {
-  padding: 20px 0;
-}
-.main-box aside .content h1 {
-  font-size: 1.4em;
-}
-.main-box aside .content button {
-  background-color: white;
-  border-radius: 10px;
-  padding: 10px 20px;
-  border: 1px solid black;
-  cursor: pointer;
-  color: black;
-  margin-top: 50px;
-}
-.main-box aside .content button {
-  transition: 0.2s ease-in;
-}
-.main-box aside .content button:hover {
-  background-color: #dddbdb;
-}
-
 .social-display .youtube {
   background-color: red;
   padding: 20px;
@@ -239,11 +240,6 @@ main button:hover {
   display: inline-block;
   position: relative;
   border-radius: 50%;
-}
-.picture-options picture .picture-1::after, .picture-options picture .picture-1::after {
-  position: absolute;
-  content: "Perfect circle";
-  margin-top: 20px;
 }
 .picture-options picture .picture-2 {
   width: 250px;

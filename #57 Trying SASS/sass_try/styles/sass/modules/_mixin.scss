@@ -1,6 +1,16 @@
-@mixin flex($direction) {
+@mixin flex($direction , $center: false) {
    display: flex;
    flex-direction: $direction;
+   
+   @if $direction == column {
+      @if $center {
+         justify-content: center;
+      }
+   } @else {
+      @if $center {
+         align-items: center;
+      }
+   }
 }
 
 @mixin gridColumn($column, $gap: 0) {
@@ -18,13 +28,6 @@
 
    @if $circle {
       border-radius: 50%;
-
-      &::after,
-      &::after {
-         position: absolute;
-         content: 'Perfect circle';
-         margin-top: 20px;
-      }
    }
 }
 
