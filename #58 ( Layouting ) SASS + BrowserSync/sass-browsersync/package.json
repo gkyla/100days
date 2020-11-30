@@ -1,0 +1,17 @@
+{
+  "name": "sass-browsersync",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./src/styles/sass/main.scss ./src/styles/css/main.css",
+    "bs" : "browser-sync start --config bs-config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.13",
+    "sass": "^1.29.0"
+  }
+}
