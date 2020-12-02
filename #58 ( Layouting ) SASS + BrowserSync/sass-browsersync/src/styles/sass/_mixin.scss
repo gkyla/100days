@@ -1,0 +1,9 @@
+@mixin buttonStyle($bgColor , $textColor){
+    margin-top: 20px;
+    padding: 15px 30px;
+    border-radius: 10px;
+    background-color: $bgColor;
+    color: $textColor;
+    border: none;
+    cursor: pointer;
+}

@@ -1,3 +1,309 @@
-body{
-    background: #eaeaea;
+@use 'mixin'as helper;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 200vh;
+    font-family: 'Comfortaa', cursive;
+}
+
+$primaryColor: #2AEA89;
+$secondaryColor : #2B2D3D;
+
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 80px;
+    background: transparent;
+
+
+    #logo {
+        width: 200px;
+    }
+
+    .nav-links {
+        background-color: transparent;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 30%;
+        list-style: none;
+
+        li {
+            display: inline-block;
+
+            a {
+                text-decoration: none;
+                color: white;
+            }
+        }
+    }
+}
+
+
+.jumbotron {
+    background-image: url(../../public/img/jumbotron.jpg);
+    margin-top: -80px;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+
+    h1 {
+        font-weight: 300;
+    }
+}
+
+.branding {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    .card {
+        flex: 1;
+
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-evenly;
+        min-height: 250px;
+        text-align: center;
+        color: $primaryColor;
+
+        i {
+            font-size: 40px;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        &:nth-child(1) {
+            background-color: #355563;
+        }
+
+        &:nth-child(2) {
+            background-color: #2B2D3D;
+        }
+
+        &:nth-child(3) {
+            background-color: #565F5E;
+        }
+    }
+}
+
+.offer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    min-height: 400px;
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .column-1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #565F5E;
+
+        &>* {
+            margin: 10px;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+
+            li {
+                padding: 5px;
+            }
+
+            & li::before {
+                content: '\2022';
+                color: $primaryColor;
+                width: 40px;
+                height: 40px;
+                display: inline-block;
+                font-weight: bold;
+                margin-right: 10px;
+                font-size: 20px;
+            }
+        }
+
+        button {
+            @include helper.buttonStyle($primaryColor, white);
+        }
+    }
+}
+
+.watch {
+    width: 100%;
+    min-height: 350px;
+    background-image: url(../../public/img/video.jpg);
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+    text-transform: uppercase;
+
+    &::after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba($color: #000000, $alpha: 0.5);
+    }
+
+    button {
+        @include helper.buttonStyle($primaryColor, white);
+        margin-top: 20px;
+    }
+}
+
+.news {
+    background-color: #2AEA89;
+    padding: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    p {
+        color: white;
+    }
+
+    .container {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+
+        .card {
+            width: 400px;
+            background-color: white;
+
+
+            .top {
+                width: 100%;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .description {
+
+                padding: 20px;
+
+                h1 {
+                    font-size: 1.3em;
+                }
+
+                p {
+                    margin-top: 10px;
+                    text-align: justify;
+                    color: #808080;
+                }
+            }
+        }
+
+        button {
+            @include helper.buttonStyle(rgb(51, 54, 54), $primaryColor);
+            margin-top: 20px;
+        }
+    }
+}
+
+.start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    width: 100%;
+    background-color: $secondaryColor;
+    color: white;
+    min-height: 400px;
+    text-align: center;
+
+    .start-project {
+        @include helper.buttonStyle($primaryColor, black)
+    }
+
+    .read-more {
+        margin-left: 10px;
+        @include helper.buttonStyle(white, black)
+    }
+}
+
+.footer {
+    .container {
+        width: 100%;
+        display: grid;
+        min-height: 400px;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-items: end;
+        padding: 30px;
+
+        .column-2 {
+
+            a {
+                display: block;
+
+            }
+        }
+    }
+}
+
+
+.footer-bottom {
+    background-color: $secondaryColor;
+
+    .container {
+        width: 100%;
+        padding: 20px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        a {
+            text-decoration: none;
+            color: $primaryColor;
+        }
+    }
 }
