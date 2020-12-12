@@ -8,11 +8,11 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://gkyla-devchallenges-mygallery.netlify.app">
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="https://https://devchallenges.io/solutions/41lk3ypleYwyDpjkMk7b">
       Solution
     </a>
     <span> | </span>
