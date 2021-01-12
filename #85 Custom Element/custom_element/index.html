@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Element</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Ini Custom Element nya -->
+      <!-- Kita bisa isi apa aja , tergantung apa yang kita isi di dalem nya -->
+      <the-card
+        title="Ramen para todos"
+        imageUrl="./image1.jpg"
+        caption="Makan ramen skuytt"
+      >
+      </the-card>
+
+      <the-card
+        title="Card pake fallback img"
+        caption="Gambar otomatis ke replace kalo ngga nentuin attribute imageUrl"
+      ></the-card>
+
+      <the-card
+        title="Jadi reusable bingit"
+        imageUrl="./lampu.jpg"
+        caption="Lampu"
+      ></the-card>
+
+      <the-card
+        title="Jadi reusable bingit"
+        imageUrl="./lampu.jpg"
+        caption="Lampu"
+      ></the-card>
+    </div>
+  </body>
+
+  <script type="module">
+    import theCard from './card.js';
+  </script>
+</html>
