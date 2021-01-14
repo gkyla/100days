@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Element</title>
+  </head>
+
+  <style>
+    body {
+      font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+        'Lucida Sans', Arial, sans-serif;
+      min-height: 100vh;
+      width: 100%;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .container > * {
+      display: inline-block;
+    }
+
+    .card {
+      border-radius: 0.5rem;
+      overflow: hidden;
+      margin: 0.5rem;
+      box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.7);
+      display: block;
+      background: red !important;
+      max-width: 120px !important;
+      min-height: 130px !important;
+    }
+  </style>
+
+  <body>
+    <!-- Ini Custom Element nya -->
+    <!-- Kita bisa isi apa aja , tergantung apa yang kita isi di dalem nya -->
+    <div class="container">
+      <the-card
+        title="Ramen para todos"
+        imageUrl="./image1.jpg"
+        caption="Makan ramen skuytt"
+      >
+      </the-card>
+
+      <the-card
+        title="Card pake fallback img"
+        caption="Gambar otomatis ke replace kalo ngga nentuin attribute imageUrl"
+      ></the-card>
+
+      <the-card
+        title="Jadi reusable bingit"
+        imageUrl="./lampu.jpg"
+        caption="Lampu"
+      ></the-card>
+
+      <the-card
+        title="Jadi reusable bingit"
+        imageUrl="./lampu.jpg"
+        caption="Lampu"
+      ></the-card>
+    </div>
+  </body>
+
+  <script type="module">
+    import theCard from './card.js';
+  </script>
+</html>
