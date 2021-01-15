@@ -1,8 +1,0 @@
-Day 86 - Encapsulated style with Shadow Root 
--
-Sebelum nya gw ngga tau fungsi Shadow Root itu sebenernya apa. Ternyata kita bisa Encapsulated Style kita sendiri
-baru nyadar ini semenjak pake Vue dan kalo gw ngga salah adanya konsep Scoped style itu ngikutin dari si Shadow Root ini walaupun ngga sama 
-cara nya. 
-
-enak nya punya scoped style kita bisa batesin style nya cuman ke component itu sendiri. dan ga bakal ngaruh ke luar dan sebaliknya
-kita ngga bisa styling shadow root dari plaint css biasa.
